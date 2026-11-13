@@ -29,4 +29,13 @@ class LatestTests(unittest.TestCase):
  def test_duplicate_ui_request(self):
   with self.api.guard:self.api.state['busy']=True
   with patch.object(launcher.threading,'Thread') as t:self.api.refresh();t.assert_not_called()
+ def test_legacy_label_uses_actual_registered_build(self):
+  from unittest.mock import Mock
+  a=self.api;m=a.manifest;a.serial='TEST';m['legacy_builds'][m['target_sha256']]='v43-local';fake=Mock()
+  fake.run.return_value=('List of devices attached\nTEST device',0)
+  fake.shell.side_effect=lambda *args,**kw:('TEST' if args[0]=='getprop' else '',0)
+  fake.hash.side_effect=lambda path,**kw:m['target_sha256'] if path.endswith(m['main_name']) else None
+  with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'),patch.object(launcher.engine,'legacy_original',return_value='/verified-original'):
+   a._scan()
+  self.assertEqual(a.get_state()['current'],'v43 로컬 시험본')
 if __name__=='__main__':unittest.main(verbosity=2)

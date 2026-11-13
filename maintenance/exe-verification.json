@@ -1,0 +1,17 @@
+{
+  "status": "PASS_REAL_WEBVIEW_UI",
+  "standalone": true,
+  "bundled_payload_verified": true,
+  "displayed_backup_path_verified": true,
+  "dom": {
+    "width": 884,
+    "height": 541,
+    "overflow": false,
+    "title": "H3VR2",
+    "buttons": [
+      "설치 확인 / 재설치",
+      "제거 · 원본 복구"
+    ]
+  },
+  "device_modified": false
+}

@@ -112,7 +112,7 @@ class Api:
         if current==m['source_sha256']:
             self._set(current='미설치',current_note=f'게임 빌드 {m["version_code"]} · 원본 파일 확인 완료',tag='미설치',tone='neutral',install_label='한글패치 설치')
         elif current==m['target_sha256'] and legacy:
-            self._set(current='v42 로컬 시험본',current_note='검증된 원본 백업을 배포판 기록으로 이전할 수 있습니다.',tag='기록 이전 필요',tone='warning',install_label='배포판 기록으로 이전')
+            self._set(current=m['legacy_builds'][current].replace('-local','')+' 로컬 시험본',current_note='검증된 원본 백업을 배포판 기록으로 이전할 수 있습니다.',tag='기록 이전 필요',tone='warning',install_label='배포판 기록으로 이전')
         elif current==m['target_sha256']:
             self._set(current='v'+((record.get('patch_version') or m['release']) if matching else m['release']),current_note='설치 기록과 파일 확인 완료' if matching else '패치 파일 확인 완료 · 설치 기록 재확인 가능',tag='파일 확인 완료',tone='good',install_label='설치 확인 / 재설치')
         else:

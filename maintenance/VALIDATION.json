@@ -1,5 +1,5 @@
 {
-  "automated_tests": 29,
+  "automated_tests": 30,
   "device_lifecycle": {
     "method": "actual launcher Api.start and worker; real ADB and real game file; not Windows mouse automation",
     "started_utc": "2026-11-13T13:34:45.177663+00:00",
@@ -88,9 +88,16 @@
     "reason": "Window capture timeout / coordinate input geometry unavailable"
   },
   "frozen_EXE": {
-    "prior_build": "20261113.1",
+    "build": "20261113.3",
     "status": "PASS_REAL_WEBVIEW_UI",
-    "final_build_self_check_pending": true
+    "standalone": true,
+    "bundled_payload_verified": true,
+    "PATH_without_Python": true,
+    "help_button_visible_verified": [
+      1,
+      1.25,
+      1.5
+    ]
   },
   "system_DPI_changed": false,
   "WebView_zoom_tested": [
@@ -106,6 +113,7 @@
     "narrative_summary": true,
     "all_alert_screens": false
   },
-  "v43_Goodbye_alignment": "awaiting_user_confirmation",
-  "public_download_verification": "not_executed_draft_release"
+  "v43_Goodbye_alignment": "user_confirmed_normal",
+  "public_download_verification": "not_executed_draft_release",
+  "v43_summary_above_menu": "user_confirmed_normal"
 }

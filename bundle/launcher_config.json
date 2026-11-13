@@ -26,7 +26,7 @@
   "installer_host": "windows-x64",
   "installer_version": "0.1.0",
   "patch_version": "0.1.0",
-  "tool_build": "20261113.3",
+  "tool_build": "20261113.4",
   "supported_models": [
     "Quest 3"
   ],
