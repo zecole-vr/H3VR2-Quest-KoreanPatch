@@ -115,5 +115,26 @@
   },
   "v43_Goodbye_alignment": "user_confirmed_normal",
   "public_download_verification": "not_executed_draft_release",
-  "v43_summary_above_menu": "user_confirmed_normal"
+  "v43_summary_above_menu": "user_confirmed_normal",
+  "release_0_2_0": {
+    "content_build": "onboard-npc-captions-v44",
+    "target_sha256": "85b8f8eae4b5ca39de212720bbb53037223915825a8c83d5983f05dce4880520",
+    "reconstructed_from_original_sha256_match": true,
+    "recipe_sha256": "26b521c22f3de0940920aadd976fc52921fd7692bd7689d34fe6d97e2977bc3c",
+    "payload_sha256": "54a5453f9a4f896c662acba85b1ad12fb988b0a066a31584fa5ff240d7f0deb4",
+    "automated_tests": 32,
+    "offline_content_audit_checks": 44,
+    "user_runtime_confirmation": "captions fm_06/fm_07/fm_08 shown on Quest 3 (same v44 bytes, installed by test deploy script)",
+    "frozen_EXE": {
+      "build": "20261114.1",
+      "status": "PASS_REAL_WEBVIEW_UI",
+      "standalone": true,
+      "PATH_without_Python": true,
+      "device_connected": false
+    },
+    "not_run": [
+      "0.2.0 EXE real-device install/update/restore",
+      "public download verification (repository private)"
+    ]
+  }
 }

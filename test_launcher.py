@@ -38,4 +38,20 @@ class LatestTests(unittest.TestCase):
   with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'),patch.object(launcher.engine,'legacy_original',return_value='/verified-original'):
    a._scan()
   self.assertEqual(a.get_state()['current'],'v43 로컬 시험본')
+class ShippedManifestTests(unittest.TestCase):
+ V43='856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0'
+ def setUp(self):self.tmp=__import__('tempfile').TemporaryDirectory();self.old=launcher.STORAGE;launcher.STORAGE=Path(self.tmp.name);self.api=launcher.Api()
+ def tearDown(self):launcher.STORAGE=self.old;self.tmp.cleanup()
+ def test_previous_public_release_is_update_source(self):
+  m=self.api.manifest;self.assertEqual(m['compatible_previous'].get(self.V43),'0.1.0');self.assertNotEqual(m['target_sha256'],self.V43)
+  self.assertIn(self.V43,launcher.engine.known_hashes(m))
+ def test_previous_public_release_shows_update(self):
+  from unittest.mock import Mock
+  a=self.api;m=a.manifest;a.serial='TEST';fake=Mock()
+  fake.run.return_value=('List of devices attached\nTEST device',0)
+  fake.shell.side_effect=lambda *args,**kw:('TEST' if args[0]=='getprop' else '',0)
+  fake.hash.side_effect=lambda path,**kw:self.V43 if path.endswith(m['main_name']) else m['source_sha256']
+  with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'):
+   a._scan()
+  s=a.get_state();self.assertEqual(s['current'],'v0.1.0');self.assertEqual(s['tag'],'업데이트 필요');self.assertEqual(s['install_label'],'한글패치 업데이트')
 if __name__=='__main__':unittest.main(verbosity=2)

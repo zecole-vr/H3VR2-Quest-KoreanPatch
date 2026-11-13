@@ -24,9 +24,9 @@
   "publication": "배포 준비본",
   "distribution": "single-exe",
   "installer_host": "windows-x64",
-  "installer_version": "0.1.0",
-  "patch_version": "0.1.0",
-  "tool_build": "20261113.4",
+  "installer_version": "0.2.0",
+  "patch_version": "0.2.0",
+  "tool_build": "20261114.1",
   "supported_models": [
     "Quest 3"
   ],

@@ -1,7 +1,7 @@
 {
   "source_bytes": 2564249645,
-  "target_bytes": 2594527046,
-  "payload_bytes": 83575523,
+  "target_bytes": 2594597731,
+  "payload_bytes": 83587773,
   "sections": [
     {
       "name": "manifest",
@@ -7304,8 +7304,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 34518396,
-      "target_bytes": 37089820,
-      "payload_bytes": 12532156
+      "target_bytes": 37091323,
+      "payload_bytes": 12532528
     },
     {
       "name": "footlong.base_ProcGenDummyLightProbes",
@@ -10832,8 +10832,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 128525,
-      "target_bytes": 2112349,
-      "payload_bytes": 1517422
+      "target_bytes": 2181531,
+      "payload_bytes": 1529300
     },
     {
       "name": "footlong.base_dedup_017ab783",
