@@ -88,7 +88,7 @@
     "reason": "Window capture timeout / coordinate input geometry unavailable"
   },
   "frozen_EXE": {
-    "build": "20261113.3",
+    "build": "20261113.4",
     "status": "PASS_REAL_WEBVIEW_UI",
     "standalone": true,
     "bundled_payload_verified": true,
