@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+vendor/
+build/
+dist/
+bundle/data/
+*.apk
+*.hdog
+*.h264
+*.log
+*.key
+*.keystore

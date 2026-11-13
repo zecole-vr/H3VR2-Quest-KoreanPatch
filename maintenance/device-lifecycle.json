@@ -1,0 +1,83 @@
+{
+  "method": "actual launcher Api.start and worker; real ADB and real game file; not Windows mouse automation",
+  "started_utc": "2026-11-13T13:34:45.177663+00:00",
+  "tool_build": "20261113.2",
+  "patch_version": "0.1.0",
+  "source_sha256": "d1d5790b55c2f723f89fc589bb2511c02998f3191f0948a88594d49a0061e69b",
+  "target_sha256": "856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0",
+  "steps": [
+    {
+      "step": "preflight",
+      "action": "refresh",
+      "verified_sha256": "a515da45705b2307225532d57b02174aed7abdd5bb2fbd3088a3815fa85ee0d5",
+      "status": "PASS",
+      "state": {
+        "current": "자막 시험판",
+        "tag": "업데이트 필요",
+        "message": "Quest 연결 완료 · 설치 중에는 케이블을 분리하지 마세요.",
+        "can_install": true,
+        "can_restore": true
+      },
+      "log": "20261113-223445-178663-refresh.log"
+    },
+    {
+      "step": "legacy_v42_migration_and_update_to_v43",
+      "action": "install",
+      "verified_sha256": "856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0",
+      "status": "PASS",
+      "state": {
+        "current": "v0.1.0",
+        "tag": "파일 확인 완료",
+        "message": "설치 완료 · 게임에서 확인해 주세요.",
+        "can_install": true,
+        "can_restore": true
+      },
+      "log": "20261113-223457-079582-install.log"
+    },
+    {
+      "step": "same_version_reinstall_verification",
+      "action": "install",
+      "verified_sha256": "856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0",
+      "status": "PASS",
+      "state": {
+        "current": "v0.1.0",
+        "tag": "파일 확인 완료",
+        "message": "설치 완료 · 게임에서 확인해 주세요.",
+        "can_install": true,
+        "can_restore": true
+      },
+      "log": "20261113-223645-278780-install.log"
+    },
+    {
+      "step": "restore_original",
+      "action": "restore",
+      "verified_sha256": "d1d5790b55c2f723f89fc589bb2511c02998f3191f0948a88594d49a0061e69b",
+      "status": "PASS",
+      "state": {
+        "current": "미설치",
+        "tag": "미설치",
+        "message": "원본 복구 완료 · 세이브 진행 상황은 유지됩니다.",
+        "can_install": true,
+        "can_restore": false
+      },
+      "log": "20261113-223727-210487-restore.log"
+    },
+    {
+      "step": "clean_original_install",
+      "action": "install",
+      "verified_sha256": "856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0",
+      "status": "PASS",
+      "state": {
+        "current": "v0.1.0",
+        "tag": "파일 확인 완료",
+        "message": "설치 완료 · 게임에서 확인해 주세요.",
+        "can_install": true,
+        "can_restore": true
+      },
+      "log": "20261113-223830-228335-install.log"
+    }
+  ],
+  "status": "PASS",
+  "finished_utc": "2026-11-13T13:39:46.229692+00:00",
+  "APK_and_21_save_files_unchanged": true
+}

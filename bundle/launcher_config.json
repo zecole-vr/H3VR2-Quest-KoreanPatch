@@ -1,0 +1,58 @@
+{
+  "game": "H3VR2",
+  "full_game": "Hot Dogs, Horseshoes & Hand Grenades 2",
+  "banner": "ui/banner.png",
+  "platform": "Meta Quest · Standalone",
+  "platform_id": "quest-standalone",
+  "creator": "제콜",
+  "youtube": "https://www.youtube.com/@zecole",
+  "owner": "zecole-vr",
+  "repo": "H3VR2-Quest-KoreanPatch",
+  "repository": "https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch",
+  "issues": "https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/issues/new/choose",
+  "adb_terms": "https://developer.android.com/studio/terms",
+  "release_asset_regex": "^H3VR2_Quest_Windows_v(\\d+\\.\\d+\\.\\d+)\\.exe$",
+  "supported_game": "20261029D",
+  "version_code": 200502,
+  "package": "com.rustltd.h3vr2",
+  "engine": "quest_patch.py",
+  "manifest": "manifest.json",
+  "window": {
+    "width": 900,
+    "height": 580
+  },
+  "publication": "배포 준비본",
+  "distribution": "single-exe",
+  "installer_host": "windows-x64",
+  "installer_version": "0.1.0",
+  "patch_version": "0.1.0",
+  "tool_build": "20261113.3",
+  "supported_models": [
+    "Quest 3"
+  ],
+  "required_os": [
+    "Windows 10 x64",
+    "Windows 11 x64"
+  ],
+  "required_runtimes": [
+    "Microsoft Edge WebView2 Runtime",
+    ".NET Framework 4.8"
+  ],
+  "device_discovery": "ADB authorized devices; serial deduplication; select only when more than one physical device",
+  "backup_storage": "%LOCALAPPDATA%/ZECOLE/H3VR2/Quest/<device>/200502",
+  "device_original_suffix": ".zecole-original-200502",
+  "required_tools": {
+    "adb": {
+      "version": "37.0.0",
+      "provisioning": "Use existing ADB, otherwise download on first use after terms acceptance",
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.0-win.zip",
+      "sha256": "4fe305812db074cea32903a489d061eb4454cbc90a49e8fea677f4b7af764918",
+      "terms": "https://developer.android.com/studio/terms"
+    }
+  },
+  "recommended_space": {
+    "PC_work_GiB": 7,
+    "PC_temp_GiB": 0.5,
+    "Quest_GiB": 3
+  }
+}

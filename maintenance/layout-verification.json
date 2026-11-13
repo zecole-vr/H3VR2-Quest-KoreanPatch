@@ -1,0 +1,92 @@
+[
+  {
+    "scale": 1,
+    "status": "PASS",
+    "method": "Native WebView2 ZoomFactor and proportional window size; Windows system DPI unchanged",
+    "dom": {
+      "width": 884,
+      "height": 541,
+      "scrollWidth": 884,
+      "scrollHeight": 541,
+      "footerBottom": 541,
+      "buttons": [
+        {
+          "width": 448,
+          "height": 50,
+          "overflow": false
+        },
+        {
+          "width": 344,
+          "height": 50,
+          "overflow": false
+        }
+      ]
+    },
+    "help": {
+      "bottom": 454.5,
+      "top": 61.5,
+      "height": 541,
+      "dialogBottom": 479.5
+    }
+  },
+  {
+    "scale": 1.25,
+    "status": "PASS",
+    "method": "Native WebView2 ZoomFactor and proportional window size; Windows system DPI unchanged",
+    "dom": {
+      "width": 887,
+      "height": 549,
+      "scrollWidth": 887,
+      "scrollHeight": 549,
+      "footerBottom": 548.8000183105469,
+      "buttons": [
+        {
+          "width": 450,
+          "height": 50,
+          "overflow": false
+        },
+        {
+          "width": 346,
+          "height": 50,
+          "overflow": false
+        }
+      ]
+    },
+    "help": {
+      "bottom": 461.6000061035156,
+      "top": 62.400001525878906,
+      "height": 549,
+      "dialogBottom": 486.4000015258789
+    }
+  },
+  {
+    "scale": 1.5,
+    "status": "PASS",
+    "method": "Native WebView2 ZoomFactor and proportional window size; Windows system DPI unchanged",
+    "dom": {
+      "width": 889,
+      "height": 554,
+      "scrollWidth": 889,
+      "scrollHeight": 554,
+      "footerBottom": 554,
+      "buttons": [
+        {
+          "width": 452,
+          "height": 51,
+          "overflow": false
+        },
+        {
+          "width": 347,
+          "height": 51,
+          "overflow": false
+        }
+      ]
+    },
+    "help": {
+      "bottom": 466.66668701171875,
+      "top": 62.66666793823242,
+      "height": 554,
+      "dialogBottom": 491.3333549499512
+    }
+  }
+]

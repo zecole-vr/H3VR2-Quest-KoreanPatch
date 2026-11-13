@@ -1,0 +1,48 @@
+{
+  "format": 2,
+  "game": "Hot Dogs, Horseshoes & Hand Grenades 2",
+  "package": "com.rustltd.h3vr2",
+  "main_name": "footlong.base.hdog",
+  "source_sha256": "d1d5790b55c2f723f89fc589bb2511c02998f3191f0948a88594d49a0061e69b",
+  "target_sha256": "856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0",
+  "source_apk_sha256": "6ecb14d1beb0db30865a03c006ec1705896388ab5fb013d5ee44a7edac83e267",
+  "compatible_previous": {
+    "a515da45705b2307225532d57b02174aed7abdd5bb2fbd3088a3815fa85ee0d5": "v42-local"
+  },
+  "name": "H3VR2 Quest Korean",
+  "release": "0.1.0",
+  "patch_version": "0.1.0",
+  "installer_version": "0.1.0",
+  "tool_build": "20261113.3",
+  "version_name": "20261029D",
+  "version_code": 200502,
+  "source_bytes": 2564249645,
+  "target_bytes": 2594527046,
+  "platform": "quest-standalone",
+  "installer_host": "windows-x64",
+  "supported_models": [
+    "Quest 3"
+  ],
+  "recipe_sha256": "953701c695607d88d1bebdbd6cff062941c66dce37715da03afa4b9b062627b4",
+  "payload_sha256": "dec900c196f8779853c3d6da47d0c4bb730d5b105b90d0efae8ed85c2d364f9c",
+  "payload_bytes": 83575523,
+  "recipe_ops": 2584,
+  "backup_suffix": ".zecole-original-200502",
+  "publication_status": "PREPARED_NOT_PUBLISHED",
+  "runtime_baseline": "final-dialog-v43; exact bytes tested by launcher worker on Quest 3; screen-specific coverage in maintenance/VALIDATION.md",
+  "legacy_original_paths": [
+    "/sdcard/ZECOLE/H3VR2/transactions/play-options-test-v2-permissions/original-before.hdog"
+  ],
+  "legacy_builds": {
+    "856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0": "v43-local",
+    "a515da45705b2307225532d57b02174aed7abdd5bb2fbd3088a3815fa85ee0d5": "v42-local"
+  },
+  "patch_files": [
+    {
+      "name": "footlong.base.hdog",
+      "source_sha256": "d1d5790b55c2f723f89fc589bb2511c02998f3191f0948a88594d49a0061e69b",
+      "target_sha256": "856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0",
+      "algorithm": "HDOG section copy and bounded BSDIFF40"
+    }
+  ]
+}

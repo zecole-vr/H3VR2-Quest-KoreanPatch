@@ -1,0 +1,22 @@
+name: 버그 제보 / 수정 요청
+description: 번역, 표시, 설치 또는 복구 문제를 알려 주세요.
+title: "[문제] "
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: 게임 버전 / 패치 버전 / 설치기 파일명
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: 문제와 재현 방법
+      description: 어느 화면에서 무엇을 했을 때 발생했는지 적어 주세요.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 화면 또는 로그
+      description: 계정 정보·기기 일련번호 등 개인정보는 가린 후 첨부해 주세요.
