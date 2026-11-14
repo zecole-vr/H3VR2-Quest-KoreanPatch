@@ -11,7 +11,7 @@
   "repository": "https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch",
   "issues": "https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/issues/new/choose",
   "adb_terms": "https://developer.android.com/studio/terms",
-  "release_asset_regex": "^H3VR2_Quest_Windows_v(\\d+\\.\\d+\\.\\d+)\\.exe$",
+  "release_asset_regex": "^H3VR2_Quest_Setup_v(\\d+\\.\\d+\\.\\d+)\\.exe$",
   "supported_game": "20261029D",
   "version_code": 200502,
   "package": "com.rustltd.h3vr2",
@@ -24,9 +24,9 @@
   "publication": "배포 준비본",
   "distribution": "single-exe",
   "installer_host": "windows-x64",
-  "installer_version": "0.2.0",
-  "patch_version": "0.2.0",
-  "tool_build": "20261114.1",
+  "installer_version": "0.2.1",
+  "patch_version": "0.2.1",
+  "tool_build": "20261114.2",
   "supported_models": [
     "Quest 3"
   ],

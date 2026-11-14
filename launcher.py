@@ -54,7 +54,7 @@ class Api:
                 assets={a['name']:a for a in rel.get('assets',[])}
                 for name,asset in assets.items():
                     match=re.fullmatch(c['release_asset_regex'],name)
-                    if not match or Version(match.group(1))!=v or name+'.sha256' not in assets:continue
+                    if not match or Version(match.group(1))!=v:continue
                     if not asset.get('browser_download_url','').startswith(c['repository']+'/releases/download/'):continue
                     candidates.append((v,name.endswith('.exe'),rel))
             if not candidates:

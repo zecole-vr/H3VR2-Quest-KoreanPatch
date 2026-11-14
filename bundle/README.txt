@@ -1,4 +1,4 @@
-H3VR2 Quest 한국어 패치 0.2.0
+H3VR2 Quest 한국어 패치 0.2.1
 제작자 · 제콜 (ZECOLE) | https://www.youtube.com/@zecole
 저장소: https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch
 문의: https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/issues/new/choose
@@ -11,7 +11,7 @@ H3VR2 Quest 한국어 패치 0.2.0
 1. 정품 게임을 Quest에 설치하고 한 번 실행한 뒤 완전히 종료합니다.
 2. Quest 개발자 모드를 켜고 Windows PC에 USB로 연결합니다.
 3. 헤드셋에서 USB 디버깅을 허용합니다.
-4. H3VR2_Quest_Windows_v0.2.0.exe를 실행해 ‘한글패치 설치’를 누릅니다.
+4. H3VR2_Quest_Setup_v0.2.1.exe를 실행해 ‘한글패치 설치’를 누릅니다.
    ADB가 없으면 최초 한 번 Google 약관 동의 후 공식 연결 도구를 준비합니다.
 5. ‘설치 완료’를 확인한 다음 게임을 실행합니다. 작업 중 USB를 분리하지 마세요.
 
@@ -19,7 +19,7 @@ H3VR2 Quest 한국어 패치 0.2.0
 게임을 종료하고 같은 EXE의 ‘제거 · 원본 복구’를 누릅니다.
 원본 APK를 수정·재서명·재설치하지 않으며, 세이브 파일을 변경하거나 초기화하지 않습니다.
 지원 버전 밖으로 게임이 업데이트되었거나 알 수 없는 파일이 있으면 덮어쓰지 않습니다.
-USB 분리나 프로세스 종료 후 다시 실행하면 기록과 해시를 검사하여 복구합니다.
+USB 분리나 프로세스 종료 후 다시 실행하면 기록과 해시를 검사하여 복구하고, 그 작업이 Quest에 남긴 임시 파일도 정리합니다.
 불명확한 상태에서는 자동 삭제하지 않으므로 백업과 로그를 보존하여 문의해 주세요.
 이 EXE를 옮기거나 다시 받아도 아래 지속 저장소의 백업·로그는 유지됩니다.
 PC: %LOCALAPPDATA%\ZECOLE\H3VR2\Quest\<기기ID>\200502

@@ -10,7 +10,7 @@ class Response:
 class LatestTests(unittest.TestCase):
  def setUp(self):self.tmp=__import__('tempfile').TemporaryDirectory();self.old=launcher.STORAGE;launcher.STORAGE=Path(self.tmp.name);self.api=launcher.Api();self.repo=self.api.config['repository']
  def tearDown(self):launcher.STORAGE=self.old;self.tmp.cleanup()
- def rel(self,v,platform='Quest_Windows',pre=False,checksum=True):
+ def rel(self,v,platform='Quest_Setup',pre=False,checksum=True):
   name=f'H3VR2_{platform}_v{v}.exe';return {'tag_name':'v'+v,'prerelease':pre,'draft':False,'html_url':self.repo+'/releases/tag/v'+v,'assets':[{'name':name,'browser_download_url':self.repo+'/releases/download/v'+v+'/'+name}]+([{'name':name+'.sha256'}] if checksum else [])}
  def check(self,data):
   with patch.object(launcher.urllib.request,'urlopen',return_value=Response(data)):self.api._latest()
@@ -18,7 +18,8 @@ class LatestTests(unittest.TestCase):
  def test_semantic_latest(self):
   s=self.check([self.rel('0.9.0'),self.rel('0.10.0')]);self.assertEqual(s['latest'],'v0.10.0');self.assertTrue(s['newer_release'])
  def test_exclude_prerelease_wrong_platform_missing_checksum(self):
-  s=self.check([self.rel('0.1.3'),self.rel('9.0.0',pre=True),self.rel('8.0.0',platform='Steam_Windows'),self.rel('7.0.0',checksum=False)]);self.assertEqual(s['latest'],'v0.1.3')
+  s=self.check([self.rel('0.1.3'),self.rel('9.0.0',pre=True),self.rel('8.0.0',platform='Steam_Setup'),self.rel('7.0.0',platform='Quest_Windows')]);self.assertEqual(s['latest'],'v0.1.3')
+ def test_exe_only_release_detected(self):self.assertEqual(self.check([self.rel('0.2.1',checksum=False)])['latest'],'v0.2.1')
  def test_empty_not_error(self):self.assertEqual(self.check([])['latest'],'공개 배포본 없음')
  def test_failed_then_retry(self):
   with patch.object(launcher.urllib.request,'urlopen',side_effect=urllib.error.URLError('offline')):self.api._latest()

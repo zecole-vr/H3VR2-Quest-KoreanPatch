@@ -344,6 +344,8 @@ def _recover(adb,m,work):
         if retired==backup:adb.shell('cp',backup,main,timeout=900)
         else:adb.shell('mv',retired,main)
         if adb.hash(main)!=j['before_sha256']:raise PatchError('자동 복구 결과가 일치하지 않습니다.')
+        # The pending path was checked absent before this operation, so whatever is there now is ours.
+        if adb.exists(j['pending']):adb.shell('rm',j['pending'])
         phase(work,j,'rolled_back');say('중단된 파일 교체를 직전 상태로 복구했습니다.');return
     raise PatchError('이전 작업의 파일 상태가 불명확합니다. 자동 변경하지 않고 백업·로그를 보존했습니다.')
 
@@ -353,6 +355,39 @@ def cleanup_owned(adb,m,j):
     if retired==main+'.zecole-retired-'+j['id'] and adb.hash(retired,missing_ok=True)==j['before_sha256']:
         adb.shell('rm',retired)
     if adb.hash(j['pending'],missing_ok=True)==j['after_sha256']:adb.shell('rm',j['pending'])
+
+def _owned_records(m,work):
+    """Finished transaction records (current and history) whose paths are exactly this engine's own names."""
+    main,backup=paths(m);work=Path(work);files=[work/'transaction.json',*sorted((work/'history').glob('transaction-*.json'))]
+    for file in files:
+        try:j=json.loads(file.read_text(encoding='utf8'))
+        except (OSError,ValueError):continue
+        token=j.get('id','') if isinstance(j,dict) else ''
+        if not isinstance(token,str) or not re.fullmatch('[a-f0-9]{12}',token):continue
+        if j.get('main')!=main or j.get('backup')!=backup or j.get('pending')!=main+'.zecole-pending-'+token:continue
+        if j.get('phase') not in ('complete','rolled_back','abandoned'):continue
+        yield j
+
+def sweep_owned(adb,m,work):
+    """Remove leftover pending/retired copies from earlier interrupted runs. Never touches the game file or the original backup."""
+    main,backup=paths(m);freed=0
+    for j in _owned_records(m,work):
+        pending=j['pending'];retired=main+'.zecole-retired-'+j['id']
+        if adb.exists(pending):
+            # complete: the verified copy was renamed into place, so a leftover must still match it.
+            # rolled_back/abandoned: the path was checked absent before the operation; any file there is ours.
+            if j['phase']!='complete' or adb.hash(pending)==j['after_sha256']:adb.shell('rm',pending);freed+=1
+        if j.get('retired')==retired and adb.exists(retired) and adb.hash(retired)==j['before_sha256']:
+            adb.shell('rm',retired);freed+=1
+    if freed:say(f'이전에 중단된 작업이 남긴 임시 파일 {freed}개를 정리했습니다.')
+
+def prune_generated(m,work):
+    """Keep only the current version's generated output on the PC."""
+    root=Path(work)/'generated'
+    if not root.is_dir():return
+    for child in root.iterdir():
+        if child.is_dir() and re.fullmatch('[a-f0-9]{64}',child.name) and child.name!=m['target_sha256']:
+            shutil.rmtree(child,ignore_errors=True)
 
 def space_check(adb,m,work,install):
     work=Path(work);work.mkdir(parents=True,exist_ok=True)
@@ -412,6 +447,7 @@ def migrate_legacy_backup(adb,m,work,current):
 
 def transact(adb,m,work,action,root):
     work=Path(work);_recover(adb,m,work);version_check(adb,m);stopped(adb,m)
+    sweep_owned(adb,m,work);prune_generated(m,work)
     main,backup=paths(m);current=adb.hash(main,missing_ok=True);saved=adb.hash(backup,missing_ok=True)
     desired=m['target_sha256'] if action=='install' else m['source_sha256']
     if current not in known_hashes(m):raise PatchError('알 수 없거나 업데이트된 파일입니다. 변경하지 않습니다.')
@@ -450,12 +486,14 @@ def transact(adb,m,work,action,root):
         try:_recover(adb,m,work)
         except Exception as recovery:say('자동 복구 보류: '+str(recovery))
         raise
-    save_receipt(work,m,desired,backup);phase(work,j,'complete');cleanup_owned(adb,m,j)
+    save_receipt(work,m,desired,backup);phase(work,j,'complete')
+    try:cleanup_owned(adb,m,j)
+    except Exception:say('임시 파일 정리를 마치지 못했습니다. 다음 실행 때 기록을 확인해 정리합니다.')
     say('설치 완료' if action=='install' else '원본 복구 완료')
 
 def recover(adb,m,work):
     with operation_lock(STORAGE/'engine'),operation_lock(Path(work)/'engine'):
-        _recover(adb,m,work)
+        _recover(adb,m,work);sweep_owned(adb,m,work)
 
 def install(adb,m,work,root=ROOT):
     verified,_=load_release(root)

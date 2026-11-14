@@ -136,5 +136,26 @@
       "0.2.0 EXE real-device install/update/restore",
       "public download verification (repository private)"
     ]
+  },
+  "release_0_2_1": {
+    "patch_data_same_as": "0.2.0",
+    "automated_tests": 36,
+    "interruption_scenarios_simulated": 15,
+    "device_leftovers_after_rerun": 0,
+    "frozen_EXE": {
+      "build": "20261114.2",
+      "status": "PASS_REAL_WEBVIEW_UI",
+      "standalone": true,
+      "PATH_without_Python": true,
+      "device_connected": false
+    },
+    "release_assets": [
+      "H3VR2_Quest_Setup_v0.2.1.exe"
+    ],
+    "exe_sha256": "41947f43e0e7f5b7294152bab10eb9a9de7cf6b63fc8b0c2369cea35687aab80",
+    "not_run": [
+      "real-device interruption injection",
+      "public download verification (repository private)"
+    ]
   }
 }
