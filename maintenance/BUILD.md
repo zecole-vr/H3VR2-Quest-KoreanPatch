@@ -4,7 +4,8 @@
 - 원래 계보: ITR2 Quest v1.2.5, commit `9245d8022655eaa1eba420cfd16facdc7a89e419`.
 - 로컬 템플릿 자체를 위 Git 커밋과 동일하다고 간주하지 않습니다. 정확한 경로/파일 SHA256은 template-provenance.json 참조.
 - H3VR2 게임 대상: Quest standalone. 설치 도구 호스트: Windows x64.
-- 번역 버전 0.2.1 / 설치기 0.2.1 / 빌드 20261114.2 / 원천 통합 시험본 onboard-npc-captions-v44 (final-dialog-v43 + 포어미트 구출·허브 상층 자막).
+- 번역 버전 0.2.2 / 설치기 0.2.2 / 빌드 20261114.3 / 원천 통합 시험본 onboard-npc-captions-v44 (final-dialog-v43 + 포어미트 구출·허브 상층 자막).
+- 0.2.2: 패치 데이터는 0.2.0과 동일. 저장소 공개 전환, 설치기 상단 표시 `Windows 설치기`, HTTPS 인증서 체인 실패 시 Windows HTTPS(.NET)로 재시도.
 - 0.2.1: 패치 데이터는 0.2.0과 동일. 중단 시 Quest 임시 파일 자동 정리, PC 생성 파일은 현재 버전만 보관, 배포 파일명을 `H3VR2_Quest_Setup_vX.Y.Z.exe` 하나로 단순화.
 - 0.2.0: 빌드 20261114.1. 0.1.0: 빌드 20261113.4 / final-dialog-v43. 0.1.0 릴리스 파일과 해시는 그대로 보존합니다.
 
@@ -22,7 +23,7 @@ python -m venv .venv
 .venv/Scripts/python.exe -m PyInstaller --noconfirm H3VR2.spec
 ```
 
-EXE 경로: `dist/H3VR2_Quest_Setup_v0.2.1.exe`.
+EXE 경로: `dist/H3VR2_Quest_Setup_v0.2.2.exe`.
 `--self-check`는 실제 WebView/도움말/차분 모듈/현재 기기 상태를 검사하되 게임 파일을 쓰지 않습니다.
 로컬 개발 환경이 없는 새 Windows 설치에서의 시험과 PATH에서 Python을 제외한 실행 시험은 구분합니다.
 
@@ -45,7 +46,7 @@ UI 중복 요청 제한과 설치 엔진 프로세스 잠금을 별도로 둡니
 ## 공개 전후
 
 태그·EXE/Source 파일명·내부 버전·체크섬·최신 자산 정규식을 함께 검사합니다.
-릴리스는 게시 상태(draft=false)이며 저장소는 비공개입니다. 정식 공개 시 안내 문구와 검증 상태를 갱신하고
+릴리스는 게시 상태(draft=false)이며 저장소는 2026-11-14에 공개로 전환했습니다. 정식 공개 시 안내 문구와 검증 상태를 갱신하고
 인증 없는 경로에서 다운로드/해시/실행/최신 버전 인식을 확인해야 합니다.
 
 실기 시험은 빌드 20261113.2의 런처 작업 경로로 수행했습니다. 최종 .4은 설치 로직/차분이 같으며 검증 문서, 설정 정보, 시험본 호환 목록을 정리한 빌드입니다.

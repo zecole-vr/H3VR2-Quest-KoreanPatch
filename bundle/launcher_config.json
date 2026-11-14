@@ -21,12 +21,12 @@
     "width": 900,
     "height": 580
   },
-  "publication": "배포 준비본",
+  "publication": "Windows 설치기",
   "distribution": "single-exe",
   "installer_host": "windows-x64",
-  "installer_version": "0.2.1",
-  "patch_version": "0.2.1",
-  "tool_build": "20261114.2",
+  "installer_version": "0.2.2",
+  "patch_version": "0.2.2",
+  "tool_build": "20261114.3",
   "supported_models": [
     "Quest 3"
   ],

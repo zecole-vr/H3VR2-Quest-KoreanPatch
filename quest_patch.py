@@ -57,6 +57,63 @@ def unpack_adb(archive, destination):
             raise PatchError('ADB 필수 파일이 빠졌습니다: ' + name)
     return tool
 
+def _is_cert_error(exc):
+    import ssl
+    return isinstance(exc, ssl.SSLCertVerificationError) or isinstance(getattr(exc, 'reason', None), ssl.SSLCertVerificationError)
+
+def windows_https_get(url, headers, timeout, limit):
+    """Same GET through Windows' own HTTPS stack (.NET/SChannel).
+
+    Python's ssl only trusts roots already present in the Windows store; Windows itself
+    downloads a missing trusted root on demand, so this succeeds where urllib fails on a
+    PC that has not yet needed that root. Certificate validation stays fully enabled.
+    """
+    import clr  # pythonnet, bundled for the WebView UI
+    clr.AddReference('System.Net.Http')
+    from System import TimeSpan
+    from System.Net import ServicePointManager, SecurityProtocolType
+    from System.Net.Http import HttpClient
+    ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol | SecurityProtocolType.Tls12
+    client = HttpClient()
+    try:
+        client.Timeout = TimeSpan.FromSeconds(timeout)
+        client.MaxResponseContentBufferSize = limit + 1
+        for key, value in headers.items():
+            client.DefaultRequestHeaders.TryAddWithoutValidation(key, value)
+        response = client.GetAsync(url).Result
+        response.EnsureSuccessStatusCode()
+        final = str(response.RequestMessage.RequestUri)
+        temp = Path(tempfile.mkdtemp(prefix='zecole-https-'))
+        try:
+            from System.IO import File
+            File.WriteAllBytes(str(temp / 'body'), response.Content.ReadAsByteArrayAsync().Result)
+            data = (temp / 'body').read_bytes()
+        finally:
+            shutil.rmtree(temp, ignore_errors=True)
+    finally:
+        client.Dispose()
+    if len(data) > limit:
+        raise PatchError('다운로드 크기가 예상 범위를 벗어났습니다.')
+    return final, data
+
+def https_get(url, headers, timeout, limit):
+    """Return (final_url, body). Falls back to Windows HTTPS only for certificate-chain failures."""
+    request = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            data = response.read(limit + 1)
+            final = getattr(response, 'geturl', lambda: url)()
+    except Exception as exc:
+        if not _is_cert_error(exc) or os.name != 'nt':
+            raise
+        try:
+            return windows_https_get(url, headers, timeout, limit)
+        except Exception:
+            raise exc
+    if len(data) > limit:
+        raise PatchError('다운로드 크기가 예상 범위를 벗어났습니다.')
+    return final, data
+
 def prepare_adb(root=ROOT, accept_terms=False):
     home = Path(root) / '.tools'
     installed = home / 'platform-tools-37.0.0'
@@ -93,21 +150,13 @@ def prepare_adb(root=ROOT, accept_terms=False):
         staging = Path(tempfile.mkdtemp(prefix='download-', dir=home)).resolve()
         try:
             archive = staging / 'platform-tools.zip'
-            request = urllib.request.Request(ADB_URL, headers={'User-Agent': 'ZECOLE-H3VR2-Quest'})
             say('ADB 다운로드 중...')
-            with urllib.request.urlopen(request, timeout=30) as response, archive.open('xb') as f:
-                if not response.geturl().startswith('https://dl.google.com/'):
-                    raise PatchError('공식 서버가 아닌 다운로드 주소로 연결되었습니다.')
-                total = 0
-                while True:
-                    block = response.read(1024 * 1024)
-                    if not block:
-                        break
-                    total += len(block)
-                    if total > 64 * 1024 * 1024:
-                        raise PatchError('ADB 다운로드 크기가 예상 범위를 벗어났습니다.')
-                    f.write(block)
-                    say(f'ADB 다운로드: {total // 1024} KB')
+            final, data = https_get(ADB_URL, {'User-Agent': 'ZECOLE-H3VR2-Quest'}, 60, 64 * 1024 * 1024)
+            if not final.startswith('https://dl.google.com/'):
+                raise PatchError('공식 서버가 아닌 다운로드 주소로 연결되었습니다.')
+            with archive.open('xb') as f:
+                f.write(data)
+            say(f'ADB 다운로드: {len(data) // 1024} KB')
             tool = unpack_adb(archive, staging)
             record = {'url': ADB_URL, 'archive_sha256': ADB_ZIP_HASH, 'license_accepted': True,
                       'terms_url': ADB_TERMS, 'accepted_at': datetime.datetime.now().isoformat(),

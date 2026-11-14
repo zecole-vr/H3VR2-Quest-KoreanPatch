@@ -55,4 +55,24 @@ class ShippedManifestTests(unittest.TestCase):
   with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'):
    a._scan()
   s=a.get_state();self.assertEqual(s['current'],'v0.1.0');self.assertEqual(s['tag'],'업데이트 필요');self.assertEqual(s['install_label'],'한글패치 업데이트')
+ def test_public_label(self):self.assertEqual(self.api.config['publication'],'Windows 설치기')
+class HttpsFallbackTests(unittest.TestCase):
+ def setUp(self):self.tmp=__import__('tempfile').TemporaryDirectory();self.old=launcher.STORAGE;launcher.STORAGE=Path(self.tmp.name);self.api=launcher.Api();self.repo=self.api.config['repository']
+ def tearDown(self):launcher.STORAGE=self.old;self.tmp.cleanup()
+ def test_cert_failure_retries_through_windows(self):
+  import ssl
+  name='H3VR2_Quest_Setup_v0.2.2.exe';data=[{'tag_name':'v0.2.2','prerelease':False,'draft':False,'html_url':self.repo+'/releases/tag/v0.2.2','assets':[{'name':name,'browser_download_url':self.repo+'/releases/download/v0.2.2/'+name}]}]
+  err=urllib.error.URLError(ssl.SSLCertVerificationError(1,'unable to get issuer certificate'))
+  with patch.object(launcher.urllib.request,'urlopen',side_effect=err),patch.object(launcher.engine.os,'name','nt'),patch.object(launcher.engine,'windows_https_get',return_value=('u',json.dumps(data).encode())) as w:
+   self.api._latest()
+  w.assert_called_once();self.assertEqual(self.api.get_state()['latest'],'v0.2.2')
+ def test_other_network_errors_do_not_use_fallback(self):
+  with patch.object(launcher.urllib.request,'urlopen',side_effect=urllib.error.URLError('offline')),patch.object(launcher.engine,'windows_https_get') as w:
+   self.api._latest()
+  w.assert_not_called();self.assertEqual(self.api.get_state()['latest'],'버전 확인 실패')
+ def test_fallback_failure_reports_original_error(self):
+  import ssl
+  err=urllib.error.URLError(ssl.SSLCertVerificationError(1,'x'))
+  with patch.object(launcher.urllib.request,'urlopen',side_effect=err),patch.object(launcher.engine.os,'name','nt'),patch.object(launcher.engine,'windows_https_get',side_effect=OSError('no clr')):
+   with self.assertRaises(urllib.error.URLError):launcher.engine.https_get('https://api.github.com/x',{},5,10)
 if __name__=='__main__':unittest.main(verbosity=2)

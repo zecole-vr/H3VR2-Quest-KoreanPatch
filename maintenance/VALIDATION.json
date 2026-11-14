@@ -157,5 +157,27 @@
       "real-device interruption injection",
       "public download verification (repository private)"
     ]
+  },
+  "release_0_2_2": {
+    "patch_data_same_as": "0.2.0",
+    "automated_tests": 40,
+    "repository_visibility": "public",
+    "windows_https_fallback_real_network": {
+      "github_api": true,
+      "adb_zip_sha256_match": true
+    },
+    "frozen_EXE": {
+      "build": "20261114.3",
+      "status": "PASS_REAL_WEBVIEW_UI",
+      "publication_label": "Windows 설치기"
+    },
+    "release_assets": [
+      "H3VR2_Quest_Setup_v0.2.2.exe"
+    ],
+    "exe_sha256": "24f62753ee01ba4522b899c000baa5e3d80a084f564a261377ced67f3364dd47",
+    "not_run": [
+      "fresh Windows lacking the root certificate",
+      "real-device interruption injection"
+    ]
   }
 }

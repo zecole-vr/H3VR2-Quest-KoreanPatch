@@ -11,10 +11,10 @@
     "a515da45705b2307225532d57b02174aed7abdd5bb2fbd3088a3815fa85ee0d5": "v42-local"
   },
   "name": "H3VR2 Quest Korean",
-  "release": "0.2.1",
-  "patch_version": "0.2.1",
-  "installer_version": "0.2.1",
-  "tool_build": "20261114.2",
+  "release": "0.2.2",
+  "patch_version": "0.2.2",
+  "installer_version": "0.2.2",
+  "tool_build": "20261114.3",
   "version_name": "20261029D",
   "version_code": 200502,
   "source_bytes": 2564249645,
@@ -29,7 +29,7 @@
   "payload_bytes": 83587773,
   "recipe_ops": 2584,
   "backup_suffix": ".zecole-original-200502",
-  "publication_status": "PREPARED_NOT_PUBLISHED",
+  "publication_status": "PUBLIC",
   "runtime_baseline": "onboard-npc-captions-v44 (final-dialog-v43 + Fore Meat rescue/upper-Hub captions); exact bytes installed on Quest 3 and captions confirmed by user; screen-specific coverage in maintenance/VALIDATION.md",
   "legacy_original_paths": [
     "/sdcard/ZECOLE/H3VR2/transactions/play-options-test-v2-permissions/original-before.hdog"

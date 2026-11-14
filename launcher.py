@@ -39,9 +39,8 @@ class Api:
             releases=[]
             for page in range(1,6):
                 url=f'https://api.github.com/repos/{c["owner"]}/{c["repo"]}/releases?per_page=100&page={page}'
-                req=urllib.request.Request(url,headers={'Accept':'application/vnd.github+json','User-Agent':'Zecole-QuestPatch'})
-                with urllib.request.urlopen(req,timeout=12) as response:
-                    part=json.loads(response.read(4*1024*1024))
+                _,body=engine.https_get(url,{'Accept':'application/vnd.github+json','User-Agent':'Zecole-QuestPatch'},12,4*1024*1024)
+                part=json.loads(body)
                 if not isinstance(part,list):raise ValueError('Unexpected releases response')
                 releases+=part
                 if len(part)<100:break

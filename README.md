@@ -5,7 +5,7 @@
 Hot Dogs, Horseshoes & Hand Grenades 2의 비공식 한국어 패치입니다.
 원본 APK를 유지하고 외부 게임 데이터에 차분을 적용합니다.
 
-> 최신 버전은 **0.2.1**입니다. 릴리스에서 `H3VR2_Quest_Setup_v0.2.1.exe` 하나만 받으시면 됩니다. [검증 기록](maintenance/VALIDATION.md)에 완료·대기 항목을 구분합니다.
+> 최신 버전은 **0.2.2**입니다. [Releases](https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/releases/latest)에서 `H3VR2_Quest_Setup_v0.2.2.exe` 하나만 받으시면 됩니다. [검증 기록](maintenance/VALIDATION.md)에 완료·대기 항목을 구분합니다.
 > 공개 릴리스가 준비되면 [Releases](https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/releases)에서 받으실 수 있습니다.
 
 ## 지원 환경
@@ -25,7 +25,7 @@ Quest 3S, Steam/PCVR, 휴대폰 단독 설치는 이 배포판의 검증 범위�
 1. 정품 게임을 설치하고 한 번 실행한 뒤 완전히 종료합니다.
 2. Quest 개발자 모드를 켜고 PC와 USB로 연결합니다.
 3. 헤드셋에서 USB 디버깅을 허용합니다.
-4. `H3VR2_Quest_Setup_v0.2.1.exe`의 **한글패치 설치**를 누릅니다.
+4. `H3VR2_Quest_Setup_v0.2.2.exe`의 **한글패치 설치**를 누릅니다.
 5. **설치 완료** 후 게임을 실행합니다.
 
 Python 등 실행 모듈은 EXE에 포함됩니다. ADB가 없으면 최초 한 번 약관 동의 후
