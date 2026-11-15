@@ -24,11 +24,12 @@
   "publication": "Windows 설치기",
   "distribution": "single-exe",
   "installer_host": "windows-x64",
-  "installer_version": "0.2.2",
-  "patch_version": "0.2.2",
-  "tool_build": "20261114.3",
+  "installer_version": "0.3.0",
+  "patch_version": "0.3.0",
+  "tool_build": "20261115.1",
   "supported_models": [
-    "Quest 3"
+    "Quest 3",
+    "Quest 3S"
   ],
   "required_os": [
     "Windows 10 x64",

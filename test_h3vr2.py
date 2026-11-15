@@ -1,4 +1,5 @@
 import hashlib,json,unittest
+from pathlib import Path
 from unittest.mock import patch
 from test_engine import EngineTests,sha
 import quest_patch as e
@@ -74,4 +75,23 @@ class H3VR2Tests(EngineTests):
   (self.w/'generated'/'not-ours').mkdir()
   e.install(self.d,v2[0],self.w,v2[1])
   self.assertEqual(sorted(p.name for p in (self.w/'generated').iterdir()),sorted([v2[0]['target_sha256'],'not-ours']))
+ def _shipped_models(self):
+  shipped=json.loads((Path(e.__file__).parent/'bundle/manifest.json').read_text(encoding='utf8'))
+  self.m.update(supported_models=shipped['supported_models'],supported_model_regex=shipped['supported_model_regex'])
+ def test_quest3s_installs_when_files_match(self):
+  self._shipped_models()
+  for model in ('Quest 3S','Quest 3S Xbox Edition','Quest 3'):
+   self.tearDown();self.setUp();self._shipped_models();self.d.model=model
+   self.install()
+   with self.subTest(model=model):self.assertEqual(self.d.files[self.d.main],b'PATCHED!')
+ def test_other_models_refused_with_model_name(self):
+  for model in ('Quest 2','Quest Pro','Quest 30','','Pico 4'):
+   self.tearDown();self.setUp();self._shipped_models();self.d.model=model
+   with self.subTest(model=model):
+    with self.assertRaises(e.PatchError) as ctx:self.install()
+    self.assertIn(model or '모델명 확인 불가',str(ctx.exception));self.assertFalse(self.d.mutations)
+ def test_quest3s_with_different_apk_untouched(self):
+  self._shipped_models();self.d.model='Quest 3S';self.d.files['/data/base.apk']=b'OTHER-APK'
+  with self.assertRaises(e.PatchError):self.install()
+  self.assertFalse(self.d.mutations)
 if __name__=='__main__':unittest.main(verbosity=2)

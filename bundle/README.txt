@@ -1,17 +1,17 @@
-H3VR2 Quest 한국어 패치 0.2.2
+H3VR2 Quest 한국어 패치 0.3.0
 제작자 · 제콜 (ZECOLE) | https://www.youtube.com/@zecole
 저장소: https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch
 문의: https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/issues/new/choose
 
-지원: Meta Quest 단독판 20261029D / versionCode 200502, Quest 3.
+지원: Meta Quest 단독판 20261029D / versionCode 200502, Quest 3 / Quest 3S (실기 검증은 Quest 3).
 정확한 원본 APK와 데이터 체크섬까지 일치해야 설치합니다.
-다른 게임 버전, Quest 3S, Steam/PCVR, Android 휴대폰 설치는 이 배포판의 검증 범위에 없습니다.
+다른 게임 버전, Steam/PCVR, Android 휴대폰 설치는 지원하지 않습니다.
 
 설치
 1. 정품 게임을 Quest에 설치하고 한 번 실행한 뒤 완전히 종료합니다.
 2. Quest 개발자 모드를 켜고 Windows PC에 USB로 연결합니다.
 3. 헤드셋에서 USB 디버깅을 허용합니다.
-4. H3VR2_Quest_Setup_v0.2.2.exe를 실행해 ‘한글패치 설치’를 누릅니다.
+4. H3VR2_Quest_Setup_v0.3.0.exe를 실행해 ‘한글패치 설치’를 누릅니다.
    ADB가 없으면 최초 한 번 Google 약관 동의 후 공식 연결 도구를 준비합니다.
 5. ‘설치 완료’를 확인한 다음 게임을 실행합니다. 작업 중 USB를 분리하지 마세요.
 

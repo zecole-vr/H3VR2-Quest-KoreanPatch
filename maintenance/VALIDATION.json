@@ -1,5 +1,5 @@
 {
-  "automated_tests": 30,
+  "automated_tests": 44,
   "device_lifecycle": {
     "method": "actual launcher Api.start and worker; real ADB and real game file; not Windows mouse automation",
     "started_utc": "2026-11-13T13:34:45.177663+00:00",
@@ -178,6 +178,29 @@
     "not_run": [
       "fresh Windows lacking the root certificate",
       "real-device interruption injection"
+    ]
+  },
+  "release_0_3_0": {
+    "date": "2026-11-15",
+    "content": "ui-fix-v47",
+    "target_sha256": "b58836fe1d2a9125b73bf5d6d914428d2f56b3e916627f3989c6ffaca75c836d",
+    "content_offline_audits": {
+      "items-ui-v45": "339/339",
+      "ui-fix-v46": "516/516",
+      "ui-fix-v47": "496/496"
+    },
+    "engine_rebuild_from_original_matches": true,
+    "device_install": "same v47 bytes installed on Quest 3 via local test deploy script; user confirmed in-game display (v45, v46, v47 photos)",
+    "quest_3s": "model gate accepts Quest 3S (automated tests); no Quest 3S device test",
+    "automated_tests": "44 (H3VR2Tests + test_launcher); 76 including test_engine",
+    "exe": {
+      "name": "H3VR2_Quest_Setup_v0.3.0.exe",
+      "sha256": "840f7b49f432682ab616213186251e0cad5e70215b8dc0bffffb0f451a71a95b",
+      "self_check": "PASS_REAL_WEBVIEW_UI, standalone, PATH without Python"
+    },
+    "not_run": [
+      "0.3.0 EXE install/update/restore on a real Quest",
+      "Quest 3S hardware"
     ]
   }
 }

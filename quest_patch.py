@@ -343,9 +343,14 @@ def paths(m):
 
 def known_hashes(m):return {m['source_sha256'],m['target_sha256'],*m.get('compatible_previous',{})}
 
+def model_supported(m,model):
+    # Model gate only narrows the device family; the game version, APK and data hashes below decide installability.
+    pattern=m.get('supported_model_regex')
+    return model in m['supported_models'] or bool(pattern and re.fullmatch(pattern,model))
+
 def version_check(adb,m):
     model=adb.shell('getprop','ro.product.model')[0].strip()
-    if model not in m['supported_models']:raise PatchError('이번 배포판은 검증된 Quest 3만 지원합니다.')
+    if not model_supported(m,model):raise PatchError(f'지원하지 않는 기기입니다: {model or "모델명 확인 불가"}. 이번 배포판은 Quest 3 / Quest 3S용입니다.')
     text=adb.shell('dumpsys','package',m['package'])[0]
     match=re.search(r'\bversionCode=(\d+)',text)
     name=re.search(r'\bversionName=([^\s]+)',text)

@@ -4,37 +4,40 @@
   "package": "com.rustltd.h3vr2",
   "main_name": "footlong.base.hdog",
   "source_sha256": "d1d5790b55c2f723f89fc589bb2511c02998f3191f0948a88594d49a0061e69b",
-  "target_sha256": "85b8f8eae4b5ca39de212720bbb53037223915825a8c83d5983f05dce4880520",
+  "target_sha256": "b58836fe1d2a9125b73bf5d6d914428d2f56b3e916627f3989c6ffaca75c836d",
   "source_apk_sha256": "6ecb14d1beb0db30865a03c006ec1705896388ab5fb013d5ee44a7edac83e267",
   "compatible_previous": {
     "856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0": "0.1.0",
-    "a515da45705b2307225532d57b02174aed7abdd5bb2fbd3088a3815fa85ee0d5": "v42-local"
+    "a515da45705b2307225532d57b02174aed7abdd5bb2fbd3088a3815fa85ee0d5": "v42-local",
+    "85b8f8eae4b5ca39de212720bbb53037223915825a8c83d5983f05dce4880520": "0.2.x"
   },
   "name": "H3VR2 Quest Korean",
-  "release": "0.2.2",
-  "patch_version": "0.2.2",
-  "installer_version": "0.2.2",
-  "tool_build": "20261114.3",
+  "release": "0.3.0",
+  "patch_version": "0.3.0",
+  "installer_version": "0.3.0",
+  "tool_build": "20261115.1",
   "version_name": "20261029D",
   "version_code": 200502,
   "source_bytes": 2564249645,
-  "target_bytes": 2594597731,
+  "target_bytes": 2597644135,
   "platform": "quest-standalone",
   "installer_host": "windows-x64",
   "supported_models": [
-    "Quest 3"
+    "Quest 3",
+    "Quest 3S"
   ],
-  "recipe_sha256": "26b521c22f3de0940920aadd976fc52921fd7692bd7689d34fe6d97e2977bc3c",
-  "payload_sha256": "54a5453f9a4f896c662acba85b1ad12fb988b0a066a31584fa5ff240d7f0deb4",
-  "payload_bytes": 83587773,
+  "recipe_sha256": "4a4a51dca880dc4963ac9afdc89ba623f789486ec8fffbcce028fb9377962c37",
+  "payload_sha256": "acd43329a3155d1616be19e070f2aa0969e30ad621bef4916ac3e3da256e56dd",
+  "payload_bytes": 86505406,
   "recipe_ops": 2584,
   "backup_suffix": ".zecole-original-200502",
   "publication_status": "PUBLIC",
-  "runtime_baseline": "onboard-npc-captions-v44 (final-dialog-v43 + Fore Meat rescue/upper-Hub captions); exact bytes installed on Quest 3 and captions confirmed by user; screen-specific coverage in maintenance/VALIDATION.md",
+  "runtime_baseline": "ui-fix-v47 (onboard-npc-captions-v44 + item names, upgrade/cert/rescue/range/pause UI, objective popup, merchant labels); exact bytes installed on Quest 3 and confirmed by user; screen-specific coverage in maintenance/VALIDATION.md",
   "legacy_original_paths": [
     "/sdcard/ZECOLE/H3VR2/transactions/play-options-test-v2-permissions/original-before.hdog"
   ],
   "legacy_builds": {
+    "b58836fe1d2a9125b73bf5d6d914428d2f56b3e916627f3989c6ffaca75c836d": "v47-local",
     "85b8f8eae4b5ca39de212720bbb53037223915825a8c83d5983f05dce4880520": "v44-local",
     "856c96bef800cd3a3fa54dc4083d244c094a065e5df56be4d51267066120a3c0": "v43-local",
     "a515da45705b2307225532d57b02174aed7abdd5bb2fbd3088a3815fa85ee0d5": "v42-local"
@@ -43,8 +46,9 @@
     {
       "name": "footlong.base.hdog",
       "source_sha256": "d1d5790b55c2f723f89fc589bb2511c02998f3191f0948a88594d49a0061e69b",
-      "target_sha256": "85b8f8eae4b5ca39de212720bbb53037223915825a8c83d5983f05dce4880520",
+      "target_sha256": "b58836fe1d2a9125b73bf5d6d914428d2f56b3e916627f3989c6ffaca75c836d",
       "algorithm": "HDOG section copy and bounded BSDIFF40"
     }
-  ]
+  ],
+  "supported_model_regex": "^Quest 3S?( .+)?$"
 }

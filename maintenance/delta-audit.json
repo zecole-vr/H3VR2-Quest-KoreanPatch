@@ -1,7 +1,7 @@
 {
   "source_bytes": 2564249645,
-  "target_bytes": 2594597731,
-  "payload_bytes": 83587773,
+  "target_bytes": 2597644135,
+  "payload_bytes": 86505406,
   "sections": [
     {
       "name": "manifest",
@@ -16,8 +16,8 @@
       "type": "UABP",
       "operation": "bsdiff",
       "source_bytes": 27361215,
-      "target_bytes": 27299603,
-      "payload_bytes": 3666711
+      "target_bytes": 27302534,
+      "payload_bytes": 3647889
     },
     {
       "name": "footlong.base_Allies",
@@ -6190,18 +6190,18 @@
     {
       "name": "footlong.base_AmmoBox",
       "type": "UABR",
-      "operation": "copy",
+      "operation": "bsdiff",
       "source_bytes": 522029,
-      "target_bytes": 522029,
-      "payload_bytes": 0
+      "target_bytes": 527116,
+      "payload_bytes": 96796
     },
     {
       "name": "footlong.base_StoreBox",
       "type": "UABR",
-      "operation": "copy",
+      "operation": "bsdiff",
       "source_bytes": 133979,
-      "target_bytes": 133979,
-      "payload_bytes": 0
+      "target_bytes": 134416,
+      "payload_bytes": 28927
     },
     {
       "name": "footlong.base_ATM",
@@ -6224,8 +6224,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 447520,
-      "target_bytes": 451924,
-      "payload_bytes": 184337
+      "target_bytes": 451987,
+      "payload_bytes": 184379
     },
     {
       "name": "footlong.base_5kgTungstenCube",
@@ -7264,24 +7264,24 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 28229850,
-      "target_bytes": 28254443,
-      "payload_bytes": 1877208
+      "target_bytes": 28254413,
+      "payload_bytes": 1877284
     },
     {
       "name": "footlong.base_ChallengesRange",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 1342781,
-      "target_bytes": 1346582,
-      "payload_bytes": 212709
+      "target_bytes": 1346563,
+      "payload_bytes": 212672
     },
     {
       "name": "footlong.base_ChallengesRangeLarge",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 14427808,
-      "target_bytes": 14503158,
-      "payload_bytes": 2111536
+      "target_bytes": 14503175,
+      "payload_bytes": 2112071
     },
     {
       "name": "footlong.base_Facility",
@@ -7304,8 +7304,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 34518396,
-      "target_bytes": 37091323,
-      "payload_bytes": 12532528
+      "target_bytes": 37091268,
+      "payload_bytes": 12532609
     },
     {
       "name": "footlong.base_ProcGenDummyLightProbes",
@@ -7320,48 +7320,48 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 10528809,
-      "target_bytes": 10552658,
-      "payload_bytes": 916537
+      "target_bytes": 10552707,
+      "payload_bytes": 916269
     },
     {
       "name": "footlong.base_Sandbox_Duney",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 5687213,
-      "target_bytes": 5697249,
-      "payload_bytes": 676991
+      "target_bytes": 5697316,
+      "payload_bytes": 677138
     },
     {
       "name": "footlong.base_Sandbox_Hangar",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 32862877,
-      "target_bytes": 32893564,
-      "payload_bytes": 2704299
+      "target_bytes": 32893619,
+      "payload_bytes": 2704141
     },
     {
       "name": "footlong.base_Sandbox_IndoorRange",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 1867135,
-      "target_bytes": 1871769,
-      "payload_bytes": 340517
+      "target_bytes": 1871813,
+      "payload_bytes": 340558
     },
     {
       "name": "footlong.base_Sandbox_SniperRange",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 4566709,
-      "target_bytes": 4584960,
-      "payload_bytes": 635537
+      "target_bytes": 4584963,
+      "payload_bytes": 635721
     },
     {
       "name": "footlong.base_SceneDef_Sandbox_DevScene",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 18162909,
-      "target_bytes": 18190524,
-      "payload_bytes": 2460065
+      "target_bytes": 18190536,
+      "payload_bytes": 2459972
     },
     {
       "name": "footlong.base_StartScreen",
@@ -7808,8 +7808,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 286551,
-      "target_bytes": 287135,
-      "payload_bytes": 19851
+      "target_bytes": 287157,
+      "payload_bytes": 20056
     },
     {
       "name": "footlong.base_Room_Bunker_Checkpoint_Pit",
@@ -8040,32 +8040,32 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 280932,
-      "target_bytes": 280666,
-      "payload_bytes": 20423
+      "target_bytes": 280686,
+      "payload_bytes": 20300
     },
     {
       "name": "footlong.base_Room_Bunker_NPC_HoardingMeat",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 285223,
-      "target_bytes": 285431,
-      "payload_bytes": 16854
+      "target_bytes": 285457,
+      "payload_bytes": 16999
     },
     {
       "name": "footlong.base_Room_Bunker_NPC_PocketMeat",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 227034,
-      "target_bytes": 228573,
-      "payload_bytes": 20617
+      "target_bytes": 228587,
+      "payload_bytes": 20713
     },
     {
       "name": "footlong.base_Room_Bunker_NPC_StarterMeat",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 284893,
-      "target_bytes": 285183,
-      "payload_bytes": 19313
+      "target_bytes": 285210,
+      "payload_bytes": 19435
     },
     {
       "name": "footlong.base_Room_Bunker_SimpleCheckPoint1",
@@ -8752,40 +8752,40 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 3253948,
-      "target_bytes": 3244113,
-      "payload_bytes": 539572
+      "target_bytes": 3244205,
+      "payload_bytes": 539683
     },
     {
       "name": "footlong.base_Room_Bunker_Trainstation_2_Offices",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 3360623,
-      "target_bytes": 3361073,
-      "payload_bytes": 588073
+      "target_bytes": 3361130,
+      "payload_bytes": 588025
     },
     {
       "name": "footlong.base_Room_Bunker_Trainstation_3_Warehouse",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 5688738,
-      "target_bytes": 5689420,
-      "payload_bytes": 879402
+      "target_bytes": 5689470,
+      "payload_bytes": 879483
     },
     {
       "name": "footlong.base_Room_Bunker_Trainstation_4_Habs",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 3543696,
-      "target_bytes": 3535353,
-      "payload_bytes": 744885
+      "target_bytes": 3535423,
+      "payload_bytes": 744730
     },
     {
       "name": "footlong.base_Room_Bunker_Trainstation_5_Stilts",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 3802857,
-      "target_bytes": 3814651,
-      "payload_bytes": 706105
+      "target_bytes": 3814805,
+      "payload_bytes": 706613
     },
     {
       "name": "footlong.base_Room_ElevatorShaft_Wide_A",
@@ -9118,10 +9118,10 @@
     {
       "name": "footlong.base_Room_Office_TrainStation_A",
       "type": "UABR",
-      "operation": "copy",
+      "operation": "bsdiff",
       "source_bytes": 2925978,
-      "target_bytes": 2925978,
-      "payload_bytes": 0
+      "target_bytes": 2925522,
+      "payload_bytes": 417962
     },
     {
       "name": "footlong.base_Room_Stilts_A",
@@ -10744,8 +10744,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 600238,
-      "target_bytes": 2730882,
-      "payload_bytes": 1852774
+      "target_bytes": 3104339,
+      "payload_bytes": 2041164
     },
     {
       "name": "footlong.base_dedup_684e8e58",
@@ -10800,24 +10800,24 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 1173904,
-      "target_bytes": 6570680,
-      "payload_bytes": 3673596
+      "target_bytes": 6960054,
+      "payload_bytes": 4081135
     },
     {
       "name": "footlong.base_dedup_d1364ca5",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 133212,
-      "target_bytes": 4062472,
-      "payload_bytes": 3006970
+      "target_bytes": 4427803,
+      "payload_bytes": 3310480
     },
     {
       "name": "footlong.base_dedup_4412cfe2",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 136262,
-      "target_bytes": 2171650,
-      "payload_bytes": 1538880
+      "target_bytes": 2542608,
+      "payload_bytes": 1848742
     },
     {
       "name": "footlong.base_dedup_c75eaace",
@@ -10832,8 +10832,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 128525,
-      "target_bytes": 2181531,
-      "payload_bytes": 1529300
+      "target_bytes": 2548722,
+      "payload_bytes": 1843009
     },
     {
       "name": "footlong.base_dedup_017ab783",
@@ -11392,8 +11392,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 111562,
-      "target_bytes": 2069653,
-      "payload_bytes": 1548669
+      "target_bytes": 2434210,
+      "payload_bytes": 1861556
     },
     {
       "name": "footlong.base_dedup_4f92264b",
@@ -12800,8 +12800,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 6353775,
-      "target_bytes": 6458770,
-      "payload_bytes": 2181435
+      "target_bytes": 6458815,
+      "payload_bytes": 2182050
     },
     {
       "name": "footlong.base_dedup_69fc718f",
@@ -13280,16 +13280,16 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 17423210,
-      "target_bytes": 19565487,
-      "payload_bytes": 8411075
+      "target_bytes": 19922561,
+      "payload_bytes": 8481013
     },
     {
       "name": "footlong.base_dedup_91d2814a",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 1116528,
-      "target_bytes": 1769857,
-      "payload_bytes": 741729
+      "target_bytes": 1854232,
+      "payload_bytes": 810139
     },
     {
       "name": "footlong.base_dedup_f9ec2772",
@@ -14136,8 +14136,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 7244569,
-      "target_bytes": 9315956,
-      "payload_bytes": 5240780
+      "target_bytes": 9681261,
+      "payload_bytes": 5657202
     },
     {
       "name": "footlong.base_dedup_bbcd6342",
@@ -19465,7 +19465,7 @@
       "operation": "bsdiff",
       "source_bytes": 7973185,
       "target_bytes": 8733952,
-      "payload_bytes": 2138790
+      "payload_bytes": 2138786
     },
     {
       "name": "footlong.base_dedup_5e57d0b8",

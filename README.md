@@ -5,27 +5,26 @@
 Hot Dogs, Horseshoes & Hand Grenades 2의 비공식 한국어 패치입니다.
 원본 APK를 유지하고 외부 게임 데이터에 차분을 적용합니다.
 
-> 최신 버전은 **0.2.2**입니다. [Releases](https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/releases/latest)에서 `H3VR2_Quest_Setup_v0.2.2.exe` 하나만 받으시면 됩니다. [검증 기록](maintenance/VALIDATION.md)에 완료·대기 항목을 구분합니다.
-> 공개 릴리스가 준비되면 [Releases](https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/releases)에서 받으실 수 있습니다.
+> 최신 버전은 **0.3.0**입니다. [Releases](https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/releases/latest)에서 `H3VR2_Quest_Setup_v0.3.0.exe` 하나만 받으시면 됩니다. [검증 기록](maintenance/VALIDATION.md)에 완료·대기 항목을 구분합니다.
 
 ## 지원 환경
 
 | 구분 | 지원 범위 |
 |---|---|
 | 게임 | Meta Quest 단독판 20261029D / versionCode 200502 |
-| 검증 기기 | Quest 3 |
+| 지원 기기 | Quest 3, Quest 3S (실기 검증은 Quest 3) |
 | 설치 도구 | Windows 10/11 x64, WebView2, .NET Framework 4.8 |
 | 권장 여유 공간 | PC 작업 드라이브 7 GiB + 임시 드라이브 0.5 GiB / Quest 3 GiB |
 
 APK·게임 데이터의 SHA256도 검사합니다. 다른 버전에는 설치하지 않습니다.
-Quest 3S, Steam/PCVR, 휴대폰 단독 설치는 이 배포판의 검증 범위에 없습니다.
+Quest 3S는 Quest 3과 같은 게임 파일을 쓰므로 설치를 허용합니다. Steam/PCVR, 휴대폰 단독 설치는 지원하지 않습니다.
 
 ## 설치
 
 1. 정품 게임을 설치하고 한 번 실행한 뒤 완전히 종료합니다.
 2. Quest 개발자 모드를 켜고 PC와 USB로 연결합니다.
 3. 헤드셋에서 USB 디버깅을 허용합니다.
-4. `H3VR2_Quest_Setup_v0.2.2.exe`의 **한글패치 설치**를 누릅니다.
+4. `H3VR2_Quest_Setup_v0.3.0.exe`의 **한글패치 설치**를 누릅니다.
 5. **설치 완료** 후 게임을 실행합니다.
 
 Python 등 실행 모듈은 EXE에 포함됩니다. ADB가 없으면 최초 한 번 약관 동의 후
