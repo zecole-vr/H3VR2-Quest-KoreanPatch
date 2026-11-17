@@ -5,13 +5,13 @@
 Hot Dogs, Horseshoes & Hand Grenades 2의 비공식 한국어 패치입니다.
 원본 APK를 유지하고 외부 게임 데이터에 차분을 적용합니다.
 
-> 최신 버전은 **0.3.0**입니다. [Releases](https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/releases/latest)에서 `H3VR2_Quest_Setup_v0.3.0.exe` 하나만 받으시면 됩니다. [검증 기록](maintenance/VALIDATION.md)에 완료·대기 항목을 구분합니다.
+> 최신 버전은 **0.4.0**입니다. [Releases](https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/releases/latest)에서 `H3VR2_Quest_Setup_v0.4.0.exe` 하나만 받으시면 됩니다. [검증 기록](maintenance/VALIDATION.md)에 완료·대기 항목을 구분합니다.
 
 ## 지원 환경
 
 | 구분 | 지원 범위 |
 |---|---|
-| 게임 | Meta Quest 단독판 20261029D / versionCode 200502 |
+| 게임 | Meta Quest 단독판 20261115D / versionCode 200522 |
 | 지원 기기 | Quest 3, Quest 3S (실기 검증은 Quest 3) |
 | 설치 도구 | Windows 10/11 x64, WebView2, .NET Framework 4.8 |
 | 권장 여유 공간 | PC 작업 드라이브 7 GiB + 임시 드라이브 0.5 GiB / Quest 3 GiB |
@@ -24,7 +24,7 @@ Quest 3S는 Quest 3과 같은 게임 파일을 쓰므로 설치를 허용합니�
 1. 정품 게임을 설치하고 한 번 실행한 뒤 완전히 종료합니다.
 2. Quest 개발자 모드를 켜고 PC와 USB로 연결합니다.
 3. 헤드셋에서 USB 디버깅을 허용합니다.
-4. `H3VR2_Quest_Setup_v0.3.0.exe`의 **한글패치 설치**를 누릅니다.
+4. `H3VR2_Quest_Setup_v0.4.0.exe`의 **한글패치 설치**를 누릅니다.
 5. **설치 완료** 후 게임을 실행합니다.
 
 Python 등 실행 모듈은 EXE에 포함됩니다. ADB가 없으면 최초 한 번 약관 동의 후
@@ -38,16 +38,14 @@ Google 공식 Platform Tools 37.0.0을 받아 체크섬을 검증합니다.
 APK 재서명·재설치나 세이브 초기화를 하지 않습니다.
 파일이 게임 업데이트 등으로 달라졌으면 자동 덮어쓰기를 중단합니다.
 
-- PC 백업·설치 기록·로그: `%LOCALAPPDATA%\ZECOLE\H3VR2\Quest\<기기ID>\200502`
-- 기기 원본: `footlong.base.hdog.zecole-original-200502` (원래 게임 데이터 옆)
+- PC 백업·설치 기록·로그: `%LOCALAPPDATA%\ZECOLE\H3VR2\Quest\<기기ID>\200522`
+- 기기 원본: `footlong.base.hdog.zecole-original-200522` (원래 게임 데이터 옆)
 - 제거 후에도 검증된 원본 백업은 보존합니다.
 - USB 분리 등으로 중단되면 다시 실행하여 기록을 검사합니다. 중단된 작업이 남긴 임시 파일은 기록과 해시가 맞을 때만 정리하고, 불명확한 파일은 자동 삭제하지 않습니다.
 - EXE를 옮기거나 다시 받아도 백업과 기록은 유지됩니다.
 
-0.1.0을 설치한 기기는 같은 EXE의 **한글패치 업데이트**로 최신 버전이 됩니다. 기존 원본 백업을 그대로 사용합니다.
-
-기존 로컬 v42 시험본은 등록된 해시와 원본 백업이 모두 검증된 경우에만 새 기록으로 이전합니다.
-다른 시험본의 자동 이전은 지원하지 않습니다. 이전 원본 백업을 덮어쓰지 않습니다.
+게임이 20261115D로 업데이트되면 게임 데이터가 새 원본으로 바뀌어 이전 한글패치(0.3.0 이하)가 사라집니다.
+0.4.0 EXE의 **한글패치 설치**로 다시 설치하면 됩니다. 0.3.0 이하 EXE는 새 게임 버전에 설치하지 않습니다.
 
 ## 번역 범위와 제한
 

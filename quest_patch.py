@@ -214,7 +214,7 @@ def build(source, output, root=ROOT):
         raise PatchError('원본과 결과 경로는 달라야 합니다.')
     say('원본 게임 데이터 체크섬 확인 중...')
     if source.stat().st_size != m['source_bytes'] or sha256(source) != m['source_sha256']:
-        raise PatchError('지원하는 H3VR2 Quest 20261029D / 빌드 200502 원본이 아닙니다. 수정하거나 설치하지 않았습니다.')
+        raise PatchError(f'지원하는 H3VR2 Quest {m["version_name"]} / 빌드 {m["version_code"]} 원본이 아닙니다. 수정하거나 설치하지 않았습니다.')
     if output.exists():
         if sha256(output) == m['target_sha256']:
             say('이미 검증된 결과 파일이 있습니다.')
@@ -354,7 +354,7 @@ def version_check(adb,m):
     text=adb.shell('dumpsys','package',m['package'])[0]
     match=re.search(r'\bversionCode=(\d+)',text)
     name=re.search(r'\bversionName=([^\s]+)',text)
-    if not name or name.group(1)!=m['version_name'] or not match or int(match.group(1))!=m['version_code']:raise PatchError('지원 게임은 H3VR2 Quest 20261029D / 빌드 200502입니다. 다른 버전은 변경하지 않습니다.')
+    if not name or name.group(1)!=m['version_name'] or not match or int(match.group(1))!=m['version_code']:raise PatchError(f'지원 게임은 H3VR2 Quest {m["version_name"]} / 빌드 {m["version_code"]}입니다. 게임을 최신 버전으로 업데이트했는지 확인해 주세요. 다른 버전은 변경하지 않습니다.')
     locations=adb.shell('pm','path',m['package'])[0].splitlines()
     if len(locations)!=1 or not locations[0].startswith('package:'):raise PatchError('게임 APK 구성이 달라 중단합니다.')
     if adb.hash(locations[0][8:])!=m['source_apk_sha256']:raise PatchError('게임 APK가 검증된 버전과 다릅니다. 변경하지 않습니다.')
