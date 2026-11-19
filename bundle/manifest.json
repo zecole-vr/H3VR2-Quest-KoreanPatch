@@ -3,43 +3,43 @@
   "game": "Hot Dogs, Horseshoes & Hand Grenades 2",
   "package": "com.rustltd.h3vr2",
   "main_name": "footlong.base.hdog",
-  "source_sha256": "7276dad645087e3e2df266deb09ad7c0c860bdf8dc77d2d6d20126454578f18b",
-  "target_sha256": "2a43704a757e23933a6ca34ebc076e730ed94de7d5eba6b87d875b7f8f03ddc3",
-  "source_apk_sha256": "4484e6d3be90beec0b9202eaf0a048a1e1b3d6a329b6ad2b827a05fff2c19265",
+  "source_sha256": "ad65fcbae0dac3c32e73d6e3289e3473e1c7f19d607fa628f30583579992a42d",
+  "target_sha256": "01ba10560f43e03a6f8f05e2ffd65c8d1ea956261fb893ef42eb4c03deb42731",
+  "source_apk_sha256": "f99cbe87cde10e1a867683438b9cf78cb701f92672e361124633275380ac987c",
   "compatible_previous": {},
   "name": "H3VR2 Quest Korean",
-  "release": "0.4.0",
-  "patch_version": "0.4.0",
-  "installer_version": "0.4.0",
-  "tool_build": "20261117.1",
-  "version_name": "20261115D",
-  "version_code": 200522,
-  "source_bytes": 2564252738,
-  "target_bytes": 2601774237,
+  "release": "0.5.0",
+  "patch_version": "0.5.0",
+  "installer_version": "0.5.0",
+  "tool_build": "20261120.1",
+  "version_name": "20261119D",
+  "version_code": 200533,
+  "source_bytes": 2658121940,
+  "target_bytes": 2696247010,
   "platform": "quest-standalone",
   "installer_host": "windows-x64",
   "supported_models": [
     "Quest 3",
     "Quest 3S"
   ],
-  "recipe_sha256": "722d33d47cbc484bd097c279d2002986a674879cc6ebdb89e25f1893adee312c",
-  "payload_sha256": "a3cf17499a41c640730672a85ad253c77821400008e14b46ffb453620eed4484",
-  "payload_bytes": 90488528,
-  "recipe_ops": 2584,
-  "backup_suffix": ".zecole-original-200522",
+  "recipe_sha256": "627347da064f6246f628d5528924a645f2d4fbb58ffc9c01fad443f3a4a17e02",
+  "payload_sha256": "3a32288a4a54a6922bfcc6a9751facb4e4649522c1ac591f0e2d9b305db32942",
+  "payload_bytes": 91260554,
+  "recipe_ops": 2666,
+  "backup_suffix": ".zecole-original-200533",
   "publication_status": "PUBLIC",
-  "runtime_baseline": "ui-fix-v49 (ui-fix-v47 ported to game 20261115D/200522 by 3-way object merge + pause confirmations, SpawnR texts/item stats, objective constraints/rewards); exact bytes installed on Quest 3; screen-specific coverage in maintenance/VALIDATION.md",
+  "runtime_baseline": "ui-fix-v52 (ui-fix-v49 ported to game 20261119D/200533 by renumber-aware 3-way object merge incl. poster/sign textures + new texts: items, weather, settings, SpawnR emptying, recycler upgrade, Türkiye); exact bytes installed on Quest 3; screen-specific coverage in maintenance/VALIDATION.md",
   "legacy_original_paths": [
-    "/sdcard/Android/obb/com.rustltd.h3vr2/footlong.base.hdog.zecole-ui-fix-v49.previous"
+    "/sdcard/Android/obb/com.rustltd.h3vr2/footlong.base.hdog.zecole-ui-fix-v51.previous"
   ],
   "legacy_builds": {
-    "2a43704a757e23933a6ca34ebc076e730ed94de7d5eba6b87d875b7f8f03ddc3": "v49-local"
+    "01ba10560f43e03a6f8f05e2ffd65c8d1ea956261fb893ef42eb4c03deb42731": "v52-local"
   },
   "patch_files": [
     {
       "name": "footlong.base.hdog",
-      "source_sha256": "7276dad645087e3e2df266deb09ad7c0c860bdf8dc77d2d6d20126454578f18b",
-      "target_sha256": "2a43704a757e23933a6ca34ebc076e730ed94de7d5eba6b87d875b7f8f03ddc3",
+      "source_sha256": "ad65fcbae0dac3c32e73d6e3289e3473e1c7f19d607fa628f30583579992a42d",
+      "target_sha256": "01ba10560f43e03a6f8f05e2ffd65c8d1ea956261fb893ef42eb4c03deb42731",
       "algorithm": "HDOG section copy and bounded BSDIFF40"
     }
   ],

@@ -12,8 +12,8 @@
   "issues": "https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/issues/new/choose",
   "adb_terms": "https://developer.android.com/studio/terms",
   "release_asset_regex": "^H3VR2_Quest_Setup_v(\\d+\\.\\d+\\.\\d+)\\.exe$",
-  "supported_game": "20261115D",
-  "version_code": 200522,
+  "supported_game": "20261119D",
+  "version_code": 200533,
   "package": "com.rustltd.h3vr2",
   "engine": "quest_patch.py",
   "manifest": "manifest.json",
@@ -24,9 +24,9 @@
   "publication": "Windows 설치기",
   "distribution": "single-exe",
   "installer_host": "windows-x64",
-  "installer_version": "0.4.0",
-  "patch_version": "0.4.0",
-  "tool_build": "20261117.1",
+  "installer_version": "0.5.0",
+  "patch_version": "0.5.0",
+  "tool_build": "20261120.1",
   "supported_models": [
     "Quest 3",
     "Quest 3S"
@@ -40,8 +40,8 @@
     ".NET Framework 4.8"
   ],
   "device_discovery": "ADB authorized devices; serial deduplication; select only when more than one physical device",
-  "backup_storage": "%LOCALAPPDATA%/ZECOLE/H3VR2/Quest/<device>/200522",
-  "device_original_suffix": ".zecole-original-200522",
+  "backup_storage": "%LOCALAPPDATA%/ZECOLE/H3VR2/Quest/<device>/200533",
+  "device_original_suffix": ".zecole-original-200533",
   "required_tools": {
     "adb": {
       "version": "37.0.0",
