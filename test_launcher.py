@@ -44,7 +44,7 @@ class ShippedManifestTests(unittest.TestCase):
  def setUp(self):self.tmp=__import__('tempfile').TemporaryDirectory();self.old=launcher.STORAGE;launcher.STORAGE=Path(self.tmp.name);self.api=launcher.Api()
  def tearDown(self):launcher.STORAGE=self.old;self.tmp.cleanup()
  def test_targets_new_game_without_old_update_sources(self):
-  m=self.api.manifest;self.assertEqual((m['version_name'],m['version_code']),('20261119E',200534));self.assertEqual(m['compatible_previous'],{})
+  m=self.api.manifest;self.assertEqual((m['version_name'],m['version_code']),('20261119E',200534));self.assertEqual(m['compatible_previous'],{'e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408':'0.5.1'})
   old={self.V43,'85b8f8eae4b5ca39de212720bbb53037223915825a8c83d5983f05dce4880520','b58836fe1d2a9125b73bf5d6d914428d2f56b3e916627f3989c6ffaca75c836d','2a43704a757e23933a6ca34ebc076e730ed94de7d5eba6b87d875b7f8f03ddc3','01ba10560f43e03a6f8f05e2ffd65c8d1ea956261fb893ef42eb4c03deb42731'}
   self.assertFalse(old&launcher.engine.known_hashes(m));self.assertEqual(self.api.config['version_code'],m['version_code'])
  def test_new_game_original_shows_install(self):
@@ -56,6 +56,15 @@ class ShippedManifestTests(unittest.TestCase):
   with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'):
    a._scan()
   s=a.get_state();self.assertEqual(s['current'],'미설치');self.assertEqual(s['install_label'],'한글패치 설치')
+ def test_v051_install_shows_update(self):
+  from unittest.mock import Mock
+  a=self.api;m=a.manifest;a.serial='TEST';fake=Mock();v53='e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408'
+  fake.run.return_value=('List of devices attached\nTEST device',0)
+  fake.shell.side_effect=lambda *args,**kw:('TEST' if args[0]=='getprop' else '',0)
+  fake.hash.side_effect=lambda path,**kw:m['source_sha256'] if path.endswith(m['backup_suffix']) else v53
+  with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'):
+   a._scan()
+  s=a.get_state();self.assertEqual(s['current'],'v0.5.1');self.assertEqual(s['install_label'],'한글패치 업데이트');self.assertTrue(s['can_install'])
  def test_public_label(self):self.assertEqual(self.api.config['publication'],'Windows 설치기')
 class HttpsFallbackTests(unittest.TestCase):
  def setUp(self):self.tmp=__import__('tempfile').TemporaryDirectory();self.old=launcher.STORAGE;launcher.STORAGE=Path(self.tmp.name);self.api=launcher.Api();self.repo=self.api.config['repository']

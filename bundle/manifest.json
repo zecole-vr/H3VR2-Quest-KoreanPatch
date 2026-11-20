@@ -4,42 +4,40 @@
   "package": "com.rustltd.h3vr2",
   "main_name": "footlong.base.hdog",
   "source_sha256": "a9b305760c6cac5d72c4de289968b2fe01114f9ff338366a0af57ba0f3f737d6",
-  "target_sha256": "e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408",
+  "target_sha256": "f8127048e607831955d51293bc54ea45973b00b2555b2bfb4062bbb7b89cc530",
   "source_apk_sha256": "86d2ca3df5da327a6f86ec358aba9f776c6c5ec6375f0c908cd1e4f237055c93",
-  "compatible_previous": {},
+  "compatible_previous": {
+    "e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408": "0.5.1"
+  },
   "name": "H3VR2 Quest Korean",
-  "release": "0.5.1",
-  "patch_version": "0.5.1",
-  "installer_version": "0.5.1",
-  "tool_build": "20261120.2",
+  "release": "0.5.2",
+  "patch_version": "0.5.2",
+  "installer_version": "0.5.2",
+  "tool_build": "20261121.1",
   "version_name": "20261119E",
   "version_code": 200534,
   "source_bytes": 2658124227,
-  "target_bytes": 2696246658,
+  "target_bytes": 2696573072,
   "platform": "quest-standalone",
   "installer_host": "windows-x64",
   "supported_models": [
     "Quest 3",
     "Quest 3S"
   ],
-  "recipe_sha256": "361d661019b5e985eb13e796531448899d7fd99e6f91c1bc65a35dc231fd902f",
-  "payload_sha256": "d8e8952dc7529bfafc558707a1b32edc5fc428c3e139782d5177a1a54392b30e",
-  "payload_bytes": 91263255,
+  "recipe_sha256": "619f5bb93fc092bc456aefcc5555723d014409310a426b279597ea3ae0eef8a3",
+  "payload_sha256": "b3e4605dd0a16eed21810b26009caf699183d35b57cdb5d38e7847fb227867b4",
+  "payload_bytes": 91548901,
   "recipe_ops": 2666,
   "backup_suffix": ".zecole-original-200534",
   "publication_status": "PUBLIC",
-  "runtime_baseline": "port-200534-v53 (ui-fix-v52 ported to game hotfix 20261119E/200534: v52 sections + game balance changes overlaid, new FilmGrain objects transplanted, Threat Assessment 2 description retranslated); exact bytes installed on Quest 3; screen-specific coverage in maintenance/VALIDATION.md",
-  "legacy_original_paths": [
-    "/sdcard/Android/obb/com.rustltd.h3vr2/footlong.base.hdog.zecole-port-200534-v53.previous"
-  ],
-  "legacy_builds": {
-    "e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408": "v53-local"
-  },
+  "runtime_baseline": "ui-fix-v54 (port-200534-v53 + per-scene wrist-menu objective popups bound to the objective ligature font, VendOS vault static texts and tab/list ligatures, caption dynamic font given its own atlas texture/material so it no longer overwrites IBMPlexSansCondensed-Bold glyphs); exact bytes installed and confirmed in-game on Quest 3; screen-specific coverage in maintenance/VALIDATION.md",
+  "legacy_original_paths": [],
+  "legacy_builds": {},
   "patch_files": [
     {
       "name": "footlong.base.hdog",
       "source_sha256": "a9b305760c6cac5d72c4de289968b2fe01114f9ff338366a0af57ba0f3f737d6",
-      "target_sha256": "e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408",
+      "target_sha256": "f8127048e607831955d51293bc54ea45973b00b2555b2bfb4062bbb7b89cc530",
       "algorithm": "HDOG section copy and bounded BSDIFF40"
     }
   ],
