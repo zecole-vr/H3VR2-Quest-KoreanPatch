@@ -304,7 +304,12 @@ class Adb:
         return self.run('shell', ' '.join(shlex.quote(str(x)) for x in args), **kwargs)
 
     def exists(self, path):
-        return self.shell('test', '-e', path, check=False)[1] == 0
+        # Only an explicit answer from the device counts; a transport error (offline, unauthorized) is not "absent".
+        out, code = self.run('shell', 'if [ -e ' + shlex.quote(str(path)) + ' ]; then echo ZECOLE_EXISTS; else echo ZECOLE_ABSENT; fi', check=False)
+        lines = out.strip().splitlines()
+        if code == 0 and lines == ['ZECOLE_EXISTS']: return True
+        if code == 0 and lines == ['ZECOLE_ABSENT']: return False
+        raise PatchError('기기 파일 존재 여부를 확인하지 못했습니다(연결 상태 확인 필요): ' + str(path))
 
     def hash(self, path, missing_ok=False):
         if missing_ok and not self.exists(path):
@@ -368,7 +373,8 @@ def save_receipt(work,m,current,backup):
         raw=old.read_bytes();history=Path(work)/'history';history.mkdir(exist_ok=True)
         saved=history/('receipt-'+hashlib.sha256(raw).hexdigest()[:16]+'.json')
         if not saved.exists():saved.write_bytes(raw)
-    atomic_json(old,{'game':m['game'],'release':m['release'] if current==m['target_sha256'] else None,'patch_version':m['release'] if current==m['target_sha256'] else None,'tool_build':m['tool_build'],'platform':m['platform'],'version_code':m['version_code'],'state':'installed' if current==m['target_sha256'] else 'restored','installed_sha256':current,'original_sha256':m['source_sha256'],'device_original_backup':backup,'pc_original_backup':str(Path(work)/'original.hdog'),'verified_at':datetime.datetime.now(datetime.timezone.utc).isoformat()})
+    label=m['release'] if current==m['target_sha256'] else m.get('compatible_previous',{}).get(current)
+    atomic_json(old,{'game':m['game'],'release':label,'patch_version':label,'tool_build':m['tool_build'],'platform':m['platform'],'version_code':m['version_code'],'state':'restored' if current==m['source_sha256'] else 'installed','installed_sha256':current,'original_sha256':m['source_sha256'],'device_original_backup':backup,'backup_policy':'device' if backup else 'pc-only','pc_original_backup':str(Path(work)/'original.hdog'),'verified_at':datetime.datetime.now(datetime.timezone.utc).isoformat()})
     atomic_json(Path(work)/'distribution-manifest.json',m)
 
 def phase(work,j,value):
@@ -387,28 +393,48 @@ def _recover(adb,m,work):
     version_check(adb,m);stopped(adb,m)
     current=adb.hash(main,missing_ok=True);original=adb.hash(backup,missing_ok=True)
     if original not in (None,m['source_sha256']):raise PatchError('원본 백업이 달라 자동 복구를 중단합니다.')
-    if current==j['after_sha256'] and original==m['source_sha256']:
-        save_receipt(work,m,current,backup);phase(work,j,'complete');cleanup_owned(adb,m,j);return
+    # Decide from the actual files, not from the journal's mode. Every removal goes through discard(), which keeps the last
+    # device copy of the original (see there), so recovery cannot lose an original.
+    if current==j['after_sha256']:
+        # Preserve/clean the leftovers first, then record completion, so a second interruption cannot lose an original.
+        cleanup_owned(adb,m,j,work)
+        save_receipt(work,m,current,backup if adb.hash(backup,missing_ok=True)==m['source_sha256'] else None);phase(work,j,'complete');return
     if current==j['before_sha256']:
-        # Recorded pending path was checked absent before the operation and is owned by it.
-        if adb.exists(j['pending']):adb.shell('rm',j['pending'])
+        # The pending path was checked absent before this operation, so whatever is there now is ours.
+        if adb.exists(j['pending']):discard(adb,m,j['pending'],work)
         phase(work,j,'abandoned');return
     retired=j.get('retired')
     if current is None and retired in (backup,main+'.zecole-retired-'+token) and adb.hash(retired,missing_ok=True)==j['before_sha256']:
         if retired==backup:adb.shell('cp',backup,main,timeout=900)
         else:adb.shell('mv',retired,main)
         if adb.hash(main)!=j['before_sha256']:raise PatchError('자동 복구 결과가 일치하지 않습니다.')
-        # The pending path was checked absent before this operation, so whatever is there now is ours.
-        if adb.exists(j['pending']):adb.shell('rm',j['pending'])
+        if adb.exists(j['pending']):discard(adb,m,j['pending'],work)
         phase(work,j,'rolled_back');say('중단된 파일 교체를 직전 상태로 복구했습니다.');return
     raise PatchError('이전 작업의 파일 상태가 불명확합니다. 자동 변경하지 않고 백업·로그를 보존했습니다.')
 
-def cleanup_owned(adb,m,j):
+def discard(adb,m,path,work):
+    """Remove an engine-owned leftover. A copy of the original is never deleted while it may be the last one: if the game
+    file is not the original and there is no device backup, the PC original is rehashed right before deletion; without it
+    the copy is kept as the device backup instead."""
+    main,backup=paths(m)
+    if adb.hash(path)==m['source_sha256'] and adb.hash(main,missing_ok=True)!=m['source_sha256'] and not adb.exists(backup) \
+            and pc_original(work,m,full=True) is None:
+        preserve_original(adb,m,path);return
+    adb.shell('rm',path)
+
+def cleanup_owned(adb,m,j,work):
     main,backup=paths(m)
     retired=j.get('retired')
-    if retired==main+'.zecole-retired-'+j['id'] and adb.hash(retired,missing_ok=True)==j['before_sha256']:
-        adb.shell('rm',retired)
-    if adb.hash(j['pending'],missing_ok=True)==j['after_sha256']:adb.shell('rm',j['pending'])
+    if retired==main+'.zecole-retired-'+j['id'] and adb.hash(retired,missing_ok=True)==j['before_sha256']:discard(adb,m,retired,work)
+    if adb.hash(j['pending'],missing_ok=True)==j['after_sha256']:discard(adb,m,j['pending'],work)
+
+def preserve_original(adb,m,path):
+    """Keep a device copy of the original as the device backup. Never overwrites: if the backup path is taken, stop and keep both."""
+    main,backup=paths(m)
+    if adb.exists(backup):raise PatchError('원본 사본을 보존할 자리에 다른 파일이 있어 중단했습니다. 두 파일을 모두 보존했습니다.')
+    adb.shell('mv','-n',path,backup)
+    if adb.exists(path) or adb.hash(backup)!=m['source_sha256']:raise PatchError('원본 사본 보존 검증 실패. 파일을 보존했습니다.')
+    say('검증된 PC 원본 백업이 없어 기기의 원본 사본을 원본 백업으로 보존했습니다.')
 
 def _owned_records(m,work):
     """Finished transaction records (current and history) whose paths are exactly this engine's own names."""
@@ -430,9 +456,9 @@ def sweep_owned(adb,m,work):
         if adb.exists(pending):
             # complete: the verified copy was renamed into place, so a leftover must still match it.
             # rolled_back/abandoned: the path was checked absent before the operation; any file there is ours.
-            if j['phase']!='complete' or adb.hash(pending)==j['after_sha256']:adb.shell('rm',pending);freed+=1
+            if j['phase']!='complete' or adb.hash(pending)==j['after_sha256']:discard(adb,m,pending,work);freed+=1
         if j.get('retired')==retired and adb.exists(retired) and adb.hash(retired)==j['before_sha256']:
-            adb.shell('rm',retired);freed+=1
+            discard(adb,m,retired,work);freed+=1
     if freed:say(f'이전에 중단된 작업이 남긴 임시 파일 {freed}개를 정리했습니다.')
 
 def prune_generated(m,work):
@@ -474,6 +500,22 @@ def legacy_original(adb,m,current):
         if adb.hash(path,missing_ok=True)==m['source_sha256']:return path
     return None
 
+def pc_original(work,m,full=False):
+    """PC-only original backup (e.g. a device whose original copy was removed under a pc-only backup policy).
+    Returns the path when it is exactly the supported original. full=True always rehashes (used before any device change);
+    otherwise a size/mtime-keyed verification record avoids rereading 2.6 GB on every status check."""
+    work=Path(work);p=work/'original.hdog';cache=work/'original-verified.json'
+    try:st=p.stat()
+    except OSError:return None
+    if not p.is_file() or st.st_size!=m['source_bytes']:return None
+    if not full:
+        try:c=json.loads(cache.read_text(encoding='utf8'))
+        except (OSError,ValueError):c={}
+        if isinstance(c,dict) and c.get('size')==st.st_size and c.get('mtime_ns')==st.st_mtime_ns and c.get('sha256')==m['source_sha256']:return p
+    if sha256(p)!=m['source_sha256']:return None
+    atomic_json(cache,{'size':st.st_size,'mtime_ns':st.st_mtime_ns,'sha256':m['source_sha256']})
+    return p
+
 def migrate_legacy_backup(adb,m,work,current):
     main,backup=paths(m)
     if adb.exists(backup):return
@@ -506,25 +548,31 @@ def transact(adb,m,work,action,root):
     desired=m['target_sha256'] if action=='install' else m['source_sha256']
     if current not in known_hashes(m):raise PatchError('알 수 없거나 업데이트된 파일입니다. 변경하지 않습니다.')
     if saved not in (None,m['source_sha256']):raise PatchError('기기 원본 백업이 달라 중단합니다.')
+    pc_only=False
     if current!=m['source_sha256'] and saved is None:
-        migrate_legacy_backup(adb,m,work,current);saved=adb.hash(backup)
+        # No device original: migrate a registered legacy copy, else use a verified PC original (pc-only policy). Never recreate one on the device.
+        if not legacy_original(adb,m,current) and pc_original(work,m,full=True):
+            pc_only=True;say('기기 원본 백업이 없어 검증된 PC 원본 백업을 사용합니다.')
+        else:migrate_legacy_backup(adb,m,work,current);saved=adb.hash(backup)
+    # pc-only is used only while the device holds a patch: the engine never deletes a device copy of the original.
     if current==desired:
         if current!=m['source_sha256'] and not (work/'original.hdog').exists():
             space_check(adb,m,work,False);pull_verified(adb,backup,work/'original.hdog',m['source_sha256'])
         if current!=m['source_sha256'] and (work/'original.hdog').exists() and sha256(work/'original.hdog')!=m['source_sha256']:raise PatchError('PC 원본 백업 검증 실패')
-        save_receipt(work,m,current,backup);say('동일한 파일 검증 완료 · 설치 기록을 확인했습니다.');return
+        save_receipt(work,m,current,backup if saved==m['source_sha256'] else None);say('동일한 파일 검증 완료 · 설치 기록을 확인했습니다.');return
     space_check(adb,m,work,action=='install')
     pull_verified(adb,main if current==m['source_sha256'] else backup,work/'original.hdog',m['source_sha256'])
     if action=='install':output=build(work/'original.hdog',work/'generated'/m['target_sha256']/m['main_name'],root)
-    token=uuid.uuid4().hex[:12];pending=main+'.zecole-pending-'+token;retired=backup if saved is None else main+'.zecole-retired-'+token
+    token=uuid.uuid4().hex[:12];pending=main+'.zecole-pending-'+token;retired=backup if saved is None and not pc_only else main+'.zecole-retired-'+token
     if adb.exists(pending) or (retired!=backup and adb.exists(retired)):raise PatchError('작업 파일 이름이 충돌하여 중단했습니다.')
-    j={'id':token,'action':action,'main':main,'backup':backup,'pending':pending,'retired':retired,'before_sha256':current,'after_sha256':desired,'source_sha256':m['source_sha256'],'created_at':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+    j={'id':token,'action':action,'main':main,'backup':backup,'pending':pending,'retired':retired,'before_sha256':current,'after_sha256':desired,'source_sha256':m['source_sha256'],'pc_only':pc_only,'created_at':datetime.datetime.now(datetime.timezone.utc).isoformat()}
     old=work/'transaction.json'
     if old.exists():
         history=work/'history';history.mkdir(exist_ok=True)
         (history/('transaction-'+uuid.uuid4().hex+'.json')).write_bytes(old.read_bytes())
     phase(work,j,'prepared');phase(work,j,'transferring')
     if action=='install':adb.run('push',str(output),pending,timeout=900)
+    elif pc_only:adb.run('push',str(work/'original.hdog'),pending,timeout=900)
     else:adb.shell('cp',backup,pending,timeout=900)
     adb.shell('chmod','0666',pending)
     if adb.shell('stat','-c','%a',pending)[0].strip()!='666':raise PatchError('기기 파일 권한을 확인하지 못했습니다.')
@@ -540,8 +588,8 @@ def transact(adb,m,work,action,root):
         try:_recover(adb,m,work)
         except Exception as recovery:say('자동 복구 보류: '+str(recovery))
         raise
-    save_receipt(work,m,desired,backup);phase(work,j,'complete')
-    try:cleanup_owned(adb,m,j)
+    save_receipt(work,m,desired,backup if saved==m['source_sha256'] or retired==backup else None);phase(work,j,'complete')
+    try:cleanup_owned(adb,m,j,work)
     except Exception:say('임시 파일 정리를 마치지 못했습니다. 다음 실행 때 기록을 확인해 정리합니다.')
     say('설치 완료' if action=='install' else '원본 복구 완료')
 

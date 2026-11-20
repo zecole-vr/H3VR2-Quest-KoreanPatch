@@ -65,6 +65,30 @@ class ShippedManifestTests(unittest.TestCase):
   with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'):
    a._scan()
   s=a.get_state();self.assertEqual(s['current'],'v0.5.1');self.assertEqual(s['install_label'],'한글패치 업데이트');self.assertTrue(s['can_install'])
+ def _scan_without_device_backup(self,pc):
+  from unittest.mock import Mock
+  a=self.api;m=a.manifest;a.serial='TEST';fake=Mock()
+  fake.run.return_value=('List of devices attached\nTEST device',0)
+  fake.shell.side_effect=lambda *args,**kw:('TEST' if args[0]=='getprop' else '',0)
+  fake.hash.side_effect=lambda path,**kw:None if path.endswith(m['backup_suffix']) else m['target_sha256']
+  with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'),patch.object(launcher.engine,'pc_original',return_value=pc):
+   a._scan()
+  return a.get_state()
+ def test_pc_only_original_allows_reinstall_and_restore(self):
+  s=self._scan_without_device_backup(Path('original.hdog'))
+  self.assertEqual(s['current'],'v'+self.api.manifest['release']);self.assertIn('PC에 보관',s['current_note']);self.assertTrue(s['can_install']);self.assertTrue(s['can_restore'])
+ def test_wireless_adb_uses_headset_serial_for_records(self):
+  from unittest.mock import Mock
+  a=self.api;m=a.manifest;fake=Mock()
+  fake.run.return_value=('List of devices attached\n192.168.0.5:41105\tdevice',0)
+  fake.shell.side_effect=lambda *args,**kw:('HEADSET0SERIAL1' if args[:2]==('getprop','ro.serialno') else ('Quest 3' if args[0]=='getprop' else ''),0)
+  fake.hash.side_effect=lambda path,**kw:m['source_sha256'] if not path.endswith(m['backup_suffix']) else None
+  with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'):
+   a._scan()
+  self.assertEqual(a.serial,'192.168.0.5:41105');self.assertEqual(a._work().parent.name,'HEADSET0SERIAL1');self.assertEqual(a.get_state()['current'],'미설치')
+ def test_missing_device_and_pc_original_still_blocked(self):
+  s=self._scan_without_device_backup(None)
+  self.assertEqual(s['current'],'원본 백업 확인 필요');self.assertFalse(s.get('can_install'));self.assertFalse(s.get('can_restore'))
  def test_public_label(self):self.assertEqual(self.api.config['publication'],'Windows 설치기')
 class HttpsFallbackTests(unittest.TestCase):
  def setUp(self):self.tmp=__import__('tempfile').TemporaryDirectory();self.old=launcher.STORAGE;launcher.STORAGE=Path(self.tmp.name);self.api=launcher.Api();self.repo=self.api.config['repository']

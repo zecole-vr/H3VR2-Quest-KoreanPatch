@@ -15,7 +15,7 @@ class Api:
         if self.config['platform_id']!=self.manifest['platform'] or self.config['package']!=self.manifest['package']:raise engine.PatchError('런처와 패치의 대상 플랫폼이 다릅니다.')
         if self.config['supported_game']!=self.manifest['version_name'] or self.config['version_code']!=self.manifest['version_code']:raise engine.PatchError('런처와 패치의 지원 게임 버전이 다릅니다.')
         if self.config['installer_host']!=self.manifest['installer_host'] or self.config['installer_version']!=self.manifest['installer_version'] or self.config['tool_build']!=self.manifest['tool_build']:raise engine.PatchError('설치기 버전 정보가 일치하지 않습니다.')
-        self.guard=threading.Lock();self.serial=None;self.adb_path=None;self.latest_url=None
+        self.guard=threading.Lock();self.serial=None;self.identities={};self.adb_path=None;self.latest_url=None
         self.state=dict(busy=False,current='Quest를 연결해 주세요',current_note='USB 연결 후 헤드셋에서 디버깅을 허용해 주세요.',tag='연결 필요',tone='neutral',latest='확인 중…',latest_note='공개된 Quest 안정 버전을 확인합니다.',latest_tone='neutral',message='USB로 Quest를 연결해 주세요.',can_install=False,can_restore=False,devices=[],needs_terms=False,config=self.config,release=self.manifest['release'],backup_path=str(self.storage))
         self.logpath=None
     def get_state(self):
@@ -78,6 +78,8 @@ class Api:
             probe=engine.Adb(self.adb_path,candidate)
             identity=probe.shell('getprop','ro.serialno',check=False)[0].strip() or candidate
             physical.setdefault(identity,candidate)
+            # Records and the PC original are keyed by the headset's own serial, so USB and wireless ADB share them.
+            if re.fullmatch(r'[A-Za-z0-9_.:-]+',identity):self.identities[candidate]=identity
         devices=list(physical.values())
         self._set(devices=devices)
         if not devices:
@@ -101,7 +103,8 @@ class Api:
         if current not in engine.known_hashes(m):
             self._set(current='설치 상태 확인 필요',current_note='지원하지 않는 파일이므로 자동으로 변경하지 않습니다.',tag='확인 필요',tone='warning',message='다른 수정본 또는 게임 업데이트 여부를 확인해 주세요.');return
         legacy=original is None and current!=m['source_sha256'] and engine.legacy_original(adb,m,current)
-        if original not in (None,m['source_sha256']) or (current!=m['source_sha256'] and original is None and not legacy):
+        pc_only=original is None and current!=m['source_sha256'] and not legacy and engine.pc_original(self._work(),m) is not None
+        if original not in (None,m['source_sha256']) or (current!=m['source_sha256'] and original is None and not legacy and not pc_only):
             self._set(current='원본 백업 확인 필요',current_note='유효한 원본 백업을 확인하지 못했습니다.',tag='확인 필요',tone='warning',message='백업을 확인하기 전에는 설치·복구할 수 없습니다.');return
         work=self._work();receipt=work/'installation.json';record={}
         if receipt.is_file():
@@ -117,13 +120,14 @@ class Api:
         else:
             label=m['compatible_previous'][current]
             self._set(current=('v'+label if label[0].isdigit() else '자막 시험판'),current_note='이 설치본으로 업데이트할 수 있습니다.',tag='업데이트 필요',tone='warning',install_label='한글패치 업데이트')
+        if pc_only:self._set(current_note=self.get_state()['current_note']+' · 원본 백업은 PC에 보관')
         latest=self.get_state().get('latest_version')
         if current==m['target_sha256'] and latest and not legacy:
             if Version(latest)>Version(m['release']):self._set(tag='업데이트 필요',tone='warning')
             elif Version(latest)==Version(m['release']):self._set(tag='최신 버전',tone='good')
         running=bool(adb.shell('pidof',m['package'],check=False)[0].strip())
         self._set(can_install=not running,can_restore=not running and current!=m['source_sha256'],message='게임을 완전히 종료한 뒤 다시 확인해 주세요.' if running else 'Quest 연결 완료 · 설치 중에는 케이블을 분리하지 마세요.')
-    def _work(self):return self.storage/re.sub(r'[^A-Za-z0-9_.-]','_',self.serial)/str(self.manifest['version_code'])
+    def _work(self):return self.storage/re.sub(r'[^A-Za-z0-9_.-]','_',self.identities.get(self.serial) or self.serial)/str(self.manifest['version_code'])
     def _worker(self,action,terms=False):
         engine.say=self._say
         logdir=self.storage/'logs';logdir.mkdir(exist_ok=True)

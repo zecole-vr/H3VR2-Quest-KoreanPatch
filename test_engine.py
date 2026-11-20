@@ -31,6 +31,8 @@ class Device:
    if self.fail and self.fail(args):self.fail=None;raise ConnectionError('injected disconnect')
    self.mutations.append(args)
    if args[0]=='rm':del self.files[args[1]]
+   elif args[:2]==('mv','-n'):
+    if args[3] not in self.files:self.files[args[3]]=self.files.pop(args[2])
    else:
     assert args[2] not in self.files,('refusing overwrite',args)
     self.files[args[2]]=self.files[args[1]]
