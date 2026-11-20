@@ -1,7 +1,7 @@
 {
-  "source_bytes": 2658121940,
-  "target_bytes": 2696247010,
-  "payload_bytes": 91260554,
+  "source_bytes": 2658124227,
+  "target_bytes": 2696246658,
+  "payload_bytes": 91263255,
   "sections": [
     {
       "name": "manifest",
@@ -15,9 +15,9 @@
       "name": "footlong.base",
       "type": "UABP",
       "operation": "bsdiff",
-      "source_bytes": 36055001,
-      "target_bytes": 35903660,
-      "payload_bytes": 6184708
+      "source_bytes": 36055310,
+      "target_bytes": 35903618,
+      "payload_bytes": 6187623
     },
     {
       "name": "footlong.base_Allies",
@@ -335,8 +335,8 @@
       "name": "footlong.base_FW_RadiationLeak",
       "type": "UABR",
       "operation": "copy",
-      "source_bytes": 13462,
-      "target_bytes": 13462,
+      "source_bytes": 13459,
+      "target_bytes": 13459,
       "payload_bytes": 0
     },
     {
@@ -7513,31 +7513,31 @@
       "operation": "bsdiff",
       "source_bytes": 28244514,
       "target_bytes": 28256052,
-      "payload_bytes": 1882790
+      "payload_bytes": 1882823
     },
     {
       "name": "footlong.base_ChallengesRange",
       "type": "UABR",
       "operation": "bsdiff",
-      "source_bytes": 1339282,
+      "source_bytes": 1339281,
       "target_bytes": 1344958,
-      "payload_bytes": 214685
+      "payload_bytes": 214530
     },
     {
       "name": "footlong.base_ChallengesRangeLarge",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 16320683,
-      "target_bytes": 16380074,
-      "payload_bytes": 2084623
+      "target_bytes": 16380077,
+      "payload_bytes": 2084638
     },
     {
       "name": "footlong.base_Facility",
       "type": "UABR",
       "operation": "bsdiff",
-      "source_bytes": 287688,
-      "target_bytes": 290278,
-      "payload_bytes": 89029
+      "source_bytes": 287686,
+      "target_bytes": 290276,
+      "payload_bytes": 89100
     },
     {
       "name": "footlong.base_FacilityScoreboard",
@@ -7545,15 +7545,15 @@
       "operation": "bsdiff",
       "source_bytes": 365963,
       "target_bytes": 370375,
-      "payload_bytes": 114372
+      "payload_bytes": 114322
     },
     {
       "name": "footlong.base_Hub",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 34592807,
-      "target_bytes": 37160117,
-      "payload_bytes": 12475736
+      "target_bytes": 37160118,
+      "payload_bytes": 12475625
     },
     {
       "name": "footlong.base_ProcGenDummyLightProbes",
@@ -7568,8 +7568,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 10534500,
-      "target_bytes": 10552752,
-      "payload_bytes": 914251
+      "target_bytes": 10552753,
+      "payload_bytes": 914284
     },
     {
       "name": "footlong.base_Sandbox_Duney",
@@ -7577,31 +7577,31 @@
       "operation": "bsdiff",
       "source_bytes": 5699627,
       "target_bytes": 5707012,
-      "payload_bytes": 676154
+      "payload_bytes": 675938
     },
     {
       "name": "footlong.base_Sandbox_Hangar",
       "type": "UABR",
       "operation": "bsdiff",
-      "source_bytes": 32858652,
-      "target_bytes": 32895480,
-      "payload_bytes": 2712485
+      "source_bytes": 32858653,
+      "target_bytes": 32895482,
+      "payload_bytes": 2712538
     },
     {
       "name": "footlong.base_Sandbox_IndoorRange",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 1877390,
-      "target_bytes": 1880358,
-      "payload_bytes": 349570
+      "target_bytes": 1880357,
+      "payload_bytes": 349573
     },
     {
       "name": "footlong.base_Sandbox_SniperRange",
       "type": "UABR",
       "operation": "bsdiff",
-      "source_bytes": 4616751,
+      "source_bytes": 4616752,
       "target_bytes": 4629230,
-      "payload_bytes": 641558
+      "payload_bytes": 641705
     },
     {
       "name": "footlong.base_SceneDef_Sandbox_DevScene",
@@ -7609,7 +7609,7 @@
       "operation": "bsdiff",
       "source_bytes": 18167852,
       "target_bytes": 18196886,
-      "payload_bytes": 2468613
+      "payload_bytes": 2468575
     },
     {
       "name": "footlong.base_StartScreen",
@@ -7617,7 +7617,7 @@
       "operation": "bsdiff",
       "source_bytes": 728225,
       "target_bytes": 981210,
-      "payload_bytes": 396449
+      "payload_bytes": 396491
     },
     {
       "name": "footlong.base_ScopeReticle_ACOG_Chevron_556",
@@ -13639,9 +13639,9 @@
       "name": "footlong.base_dedup_180e6334",
       "type": "UABR",
       "operation": "bsdiff",
-      "source_bytes": 17422304,
-      "target_bytes": 20506085,
-      "payload_bytes": 9650458
+      "source_bytes": 17424286,
+      "target_bytes": 20505774,
+      "payload_bytes": 9650417
     },
     {
       "name": "footlong.base_dedup_91d2814a",

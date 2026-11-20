@@ -1,9 +1,9 @@
-H3VR2 Quest 한국어 패치 0.5.0
+H3VR2 Quest 한국어 패치 0.5.1
 제작자 · 제콜 (ZECOLE) | https://www.youtube.com/@zecole
 저장소: https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch
 문의: https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/issues/new/choose
 
-지원: Meta Quest 단독판 20261119D / versionCode 200533, Quest 3 / Quest 3S (실기 검증은 Quest 3).
+지원: Meta Quest 단독판 20261119E / versionCode 200534, Quest 3 / Quest 3S (실기 검증은 Quest 3).
 정확한 원본 APK와 데이터 체크섬까지 일치해야 설치합니다.
 다른 게임 버전, Steam/PCVR, Android 휴대폰 설치는 지원하지 않습니다.
 
@@ -11,7 +11,7 @@ H3VR2 Quest 한국어 패치 0.5.0
 1. 정품 게임을 Quest에 설치하고 한 번 실행한 뒤 완전히 종료합니다.
 2. Quest 개발자 모드를 켜고 Windows PC에 USB로 연결합니다.
 3. 헤드셋에서 USB 디버깅을 허용합니다.
-4. H3VR2_Quest_Setup_v0.5.0.exe를 실행해 ‘한글패치 설치’를 누릅니다.
+4. H3VR2_Quest_Setup_v0.5.1.exe를 실행해 ‘한글패치 설치’를 누릅니다.
    ADB가 없으면 최초 한 번 Google 약관 동의 후 공식 연결 도구를 준비합니다.
 5. ‘설치 완료’를 확인한 다음 게임을 실행합니다. 작업 중 USB를 분리하지 마세요.
 
@@ -22,13 +22,13 @@ H3VR2 Quest 한국어 패치 0.5.0
 USB 분리나 프로세스 종료 후 다시 실행하면 기록과 해시를 검사하여 복구하고, 그 작업이 Quest에 남긴 임시 파일도 정리합니다.
 불명확한 상태에서는 자동 삭제하지 않으므로 백업과 로그를 보존하여 문의해 주세요.
 이 EXE를 옮기거나 다시 받아도 아래 지속 저장소의 백업·로그는 유지됩니다.
-PC: %LOCALAPPDATA%\ZECOLE\H3VR2\Quest\<기기ID>\200533
-기기: /sdcard/Android/obb/com.rustltd.h3vr2/footlong.base.hdog.zecole-original-200533
+PC: %LOCALAPPDATA%\ZECOLE\H3VR2\Quest\<기기ID>\200534
+기기: /sdcard/Android/obb/com.rustltd.h3vr2/footlong.base.hdog.zecole-original-200534
 원본 백업은 제거 후에도 복구 안전성을 위해 보존합니다.
 
 게임 업데이트 후
-게임이 20261119D로 업데이트되면 게임 데이터가 새 원본으로 바뀌어 이전 한글패치(0.4.0 이하)가 사라집니다.
-이 EXE의 ‘한글패치 설치’로 다시 설치하면 됩니다. 0.4.0 이하 EXE는 새 게임 버전에 설치하지 않습니다.
+게임이 20261119E로 업데이트되면 게임 데이터가 새 원본으로 바뀌어 이전 한글패치(0.5.0 이하)가 사라집니다.
+이 EXE의 ‘한글패치 설치’로 다시 설치하면 됩니다. 0.5.0 이하 EXE는 새 게임 버전에 설치하지 않습니다.
 
 필수 환경
 Windows 10/11 64비트, Microsoft Edge WebView2 Runtime, .NET Framework 4.8.
