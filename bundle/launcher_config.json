@@ -24,9 +24,9 @@
   "publication": "Windows 설치기",
   "distribution": "single-exe",
   "installer_host": "windows-x64",
-  "installer_version": "0.5.4",
-  "patch_version": "0.5.4",
-  "tool_build": "20261123.1",
+  "installer_version": "0.5.5",
+  "patch_version": "0.5.5",
+  "tool_build": "20261123.2",
   "supported_models": [
     "Quest 3",
     "Quest 3S"

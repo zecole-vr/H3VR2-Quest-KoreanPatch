@@ -1,7 +1,7 @@
 {
   "source_bytes": 2658124227,
-  "target_bytes": 2696663906,
-  "payload_bytes": 91642573,
+  "target_bytes": 2696676635,
+  "payload_bytes": 92112860,
   "sections": [
     {
       "name": "manifest",
@@ -6798,10 +6798,10 @@
     {
       "name": "footlong.base_ScoutRig",
       "type": "UABR",
-      "operation": "copy",
+      "operation": "bsdiff",
       "source_bytes": 5484190,
-      "target_bytes": 5484190,
-      "payload_bytes": 0
+      "target_bytes": 5496960,
+      "payload_bytes": 470541
     },
     {
       "name": "footlong.base_SoSecRig",
@@ -7512,48 +7512,48 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 28244514,
-      "target_bytes": 28256114,
-      "payload_bytes": 1882580
+      "target_bytes": 28256108,
+      "payload_bytes": 1882703
     },
     {
       "name": "footlong.base_ChallengesRange",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 1339281,
-      "target_bytes": 1344982,
-      "payload_bytes": 214628
+      "target_bytes": 1344983,
+      "payload_bytes": 214753
     },
     {
       "name": "footlong.base_ChallengesRangeLarge",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 16320683,
-      "target_bytes": 16380052,
-      "payload_bytes": 2084914
+      "target_bytes": 16380047,
+      "payload_bytes": 2084803
     },
     {
       "name": "footlong.base_Facility",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 287686,
-      "target_bytes": 290307,
-      "payload_bytes": 89136
+      "target_bytes": 290310,
+      "payload_bytes": 89079
     },
     {
       "name": "footlong.base_FacilityScoreboard",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 365963,
-      "target_bytes": 370365,
-      "payload_bytes": 114407
+      "target_bytes": 370359,
+      "payload_bytes": 114426
     },
     {
       "name": "footlong.base_Hub",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 34592807,
-      "target_bytes": 37160072,
-      "payload_bytes": 12475594
+      "target_bytes": 37160073,
+      "payload_bytes": 12475522
     },
     {
       "name": "footlong.base_ProcGenDummyLightProbes",
@@ -7568,16 +7568,16 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 10534500,
-      "target_bytes": 10552839,
-      "payload_bytes": 914077
+      "target_bytes": 10552832,
+      "payload_bytes": 914022
     },
     {
       "name": "footlong.base_Sandbox_Duney",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 5699627,
-      "target_bytes": 5707035,
-      "payload_bytes": 676151
+      "target_bytes": 5707028,
+      "payload_bytes": 675950
     },
     {
       "name": "footlong.base_Sandbox_Hangar",
@@ -7585,15 +7585,15 @@
       "operation": "bsdiff",
       "source_bytes": 32858653,
       "target_bytes": 32895575,
-      "payload_bytes": 2713139
+      "payload_bytes": 2713070
     },
     {
       "name": "footlong.base_Sandbox_IndoorRange",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 1877390,
-      "target_bytes": 1880389,
-      "payload_bytes": 349773
+      "target_bytes": 1880385,
+      "payload_bytes": 349741
     },
     {
       "name": "footlong.base_Sandbox_SniperRange",
@@ -7601,23 +7601,23 @@
       "operation": "bsdiff",
       "source_bytes": 4616752,
       "target_bytes": 4629303,
-      "payload_bytes": 642231
+      "payload_bytes": 642167
     },
     {
       "name": "footlong.base_SceneDef_Sandbox_DevScene",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 18167852,
-      "target_bytes": 18196899,
-      "payload_bytes": 2468624
+      "target_bytes": 18196894,
+      "payload_bytes": 2468628
     },
     {
       "name": "footlong.base_StartScreen",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 728225,
-      "target_bytes": 981215,
-      "payload_bytes": 396509
+      "target_bytes": 981209,
+      "payload_bytes": 396390
     },
     {
       "name": "footlong.base_ScopeReticle_ACOG_Chevron_556",
@@ -13641,7 +13641,7 @@
       "operation": "bsdiff",
       "source_bytes": 17424286,
       "target_bytes": 20551801,
-      "payload_bytes": 9754965
+      "payload_bytes": 9755220
     },
     {
       "name": "footlong.base_dedup_91d2814a",
