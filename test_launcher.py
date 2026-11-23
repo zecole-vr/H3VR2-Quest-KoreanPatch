@@ -44,7 +44,7 @@ class ShippedManifestTests(unittest.TestCase):
  def setUp(self):self.tmp=__import__('tempfile').TemporaryDirectory();self.old=launcher.STORAGE;launcher.STORAGE=Path(self.tmp.name);self.api=launcher.Api()
  def tearDown(self):launcher.STORAGE=self.old;self.tmp.cleanup()
  def test_targets_new_game_without_old_update_sources(self):
-  m=self.api.manifest;self.assertEqual((m['version_name'],m['version_code']),('20261119E',200534));self.assertEqual(m['compatible_previous'],{'e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408':'0.5.1'})
+  m=self.api.manifest;self.assertEqual((m['version_name'],m['version_code']),('20261119E',200534));self.assertEqual(m['compatible_previous'],{'e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408':'0.5.1','f8127048e607831955d51293bc54ea45973b00b2555b2bfb4062bbb7b89cc530':'0.5.3'})
   old={self.V43,'85b8f8eae4b5ca39de212720bbb53037223915825a8c83d5983f05dce4880520','b58836fe1d2a9125b73bf5d6d914428d2f56b3e916627f3989c6ffaca75c836d','2a43704a757e23933a6ca34ebc076e730ed94de7d5eba6b87d875b7f8f03ddc3','01ba10560f43e03a6f8f05e2ffd65c8d1ea956261fb893ef42eb4c03deb42731'}
   self.assertFalse(old&launcher.engine.known_hashes(m));self.assertEqual(self.api.config['version_code'],m['version_code'])
  def test_new_game_original_shows_install(self):

@@ -1,7 +1,7 @@
 {
   "source_bytes": 2658124227,
-  "target_bytes": 2696573072,
-  "payload_bytes": 91548901,
+  "target_bytes": 2696663906,
+  "payload_bytes": 91642573,
   "sections": [
     {
       "name": "manifest",
@@ -17,7 +17,7 @@
       "operation": "bsdiff",
       "source_bytes": 36055310,
       "target_bytes": 35903618,
-      "payload_bytes": 6187623
+      "payload_bytes": 6187669
     },
     {
       "name": "footlong.base_Allies",
@@ -11128,8 +11128,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 600238,
-      "target_bytes": 3719836,
-      "payload_bytes": 2668747
+      "target_bytes": 3731154,
+      "payload_bytes": 2679145
     },
     {
       "name": "footlong.base_dedup_684e8e58",
@@ -11184,24 +11184,24 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 1173904,
-      "target_bytes": 7604856,
-      "payload_bytes": 4501393
+      "target_bytes": 7615640,
+      "payload_bytes": 4510125
     },
     {
       "name": "footlong.base_dedup_d1364ca5",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 133212,
-      "target_bytes": 5092191,
-      "payload_bytes": 3835525
+      "target_bytes": 5102080,
+      "payload_bytes": 3843305
     },
     {
       "name": "footlong.base_dedup_4412cfe2",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 136262,
-      "target_bytes": 3218967,
-      "payload_bytes": 2359616
+      "target_bytes": 3229869,
+      "payload_bytes": 2368578
     },
     {
       "name": "footlong.base_dedup_c75eaace",
@@ -11216,8 +11216,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 128525,
-      "target_bytes": 3191057,
-      "payload_bytes": 2350233
+      "target_bytes": 3202284,
+      "payload_bytes": 2360246
     },
     {
       "name": "footlong.base_dedup_017ab783",
@@ -11776,8 +11776,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 111562,
-      "target_bytes": 3044741,
-      "payload_bytes": 2359074
+      "target_bytes": 3055960,
+      "payload_bytes": 2368860
     },
     {
       "name": "footlong.base_dedup_4f92264b",
@@ -13640,16 +13640,16 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 17424286,
-      "target_bytes": 20540231,
-      "payload_bytes": 9727810
+      "target_bytes": 20551801,
+      "payload_bytes": 9754965
     },
     {
       "name": "footlong.base_dedup_91d2814a",
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 1116442,
-      "target_bytes": 1995147,
-      "payload_bytes": 903172
+      "target_bytes": 1998025,
+      "payload_bytes": 905484
     },
     {
       "name": "footlong.base_dedup_f9ec2772",
@@ -14512,8 +14512,8 @@
       "type": "UABR",
       "operation": "bsdiff",
       "source_bytes": 3015339,
-      "target_bytes": 5997095,
-      "payload_bytes": 3560848
+      "target_bytes": 6008142,
+      "payload_bytes": 3569336
     },
     {
       "name": "footlong.base_dedup_979a132e",

@@ -1,9 +1,14 @@
-# H3VR2 Quest 한국어 패치 v0.5.3
+# H3VR2 Quest 한국어 패치 v0.5.4
 
 - 지원 게임: Meta Quest 단독판 **20261119E / 200534**, 지원 기기 Quest 3 / Quest 3S (실기 검증은 Quest 3).
-- 설치 도구: Windows x64 EXE, 설치기 0.5.3 / 빌드 **20261121.2**.
+- 설치 도구: Windows x64 EXE, 설치기 0.5.4 / 빌드 **20261123.1**.
 
-> **받을 파일은 `H3VR2_Quest_Setup_v0.5.3.exe` 하나입니다.** 아래 Assets의 “Source code” 두 개는 GitHub가 자동으로 붙이는 파일이라 받지 않으셔도 됩니다.
+> **받을 파일은 `H3VR2_Quest_Setup_v0.5.4.exe` 하나입니다.** 아래 Assets의 “Source code” 두 개는 GitHub가 자동으로 붙이는 파일이라 받지 않으셔도 됩니다.
+
+## 0.5.4 변경 사항
+
+- **용어 통일:** 부품 Relay를 ‘릴레이’로 통일했습니다. 손에 쥐었을 때는 ‘릴레이’인데 작업 지시에서는 ‘계전기’로 나오던 것을 맞췄습니다(‘재고 조사: 릴레이’, ‘릴레이 회수’, 목표 상세정보).
+- **업데이트:** 0.5.1~0.5.3을 설치했다면 0.5.4 EXE에서 ‘한글패치 업데이트’를 누르면 됩니다.
 
 ## 0.5.3 변경 사항
 
@@ -97,9 +102,10 @@ Python과 차분 모듈은 포함합니다. ADB가 없으면 최초에 Google �
 
 - 원본 APK·세이브는 변경하지 않습니다. 전체 NPC 음성 자막이나 100% 번역이 아닙니다.
 
-체크섬(SHA256) `H3VR2_Quest_Setup_v0.5.3.exe`: `ad919cc0d61c1621335567f0ba15c810019304eb3f790968b534a142168bbf8d`
+체크섬(SHA256) `H3VR2_Quest_Setup_v0.5.4.exe`: `5d2e362f79d18fdaa51536fc5d822d8a6b19414d763fe2f4d0ffc4dded9f8424`
 출처·권리·폰트·라이브러리 고지: 저장소의 `THIRD_PARTY_NOTICES.md` (설치 프로그램 안에도 동봉).
 제작자: 제콜 (ZECOLE) · https://www.youtube.com/@zecole
+
 
 
 
