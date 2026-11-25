@@ -8,8 +8,8 @@ Hot Dogs, Horseshoes & Hand Grenades 2(Meta Quest 단독판)의 비공식 한국
 
 | 항목 | 내용 |
 |---|---|
-| 최신 버전 | **0.5.5** · [검증 기록](maintenance/VALIDATION.md) |
-| 지원 게임 | Meta Quest 단독판 20261119E / versionCode 200534 |
+| 최신 버전 | **0.5.6** · [검증 기록](maintenance/VALIDATION.md) |
+| 지원 게임 | Meta Quest 단독판 20261124C / versionCode 200542 |
 | 지원 기기 | Quest 3, Quest 3S (실기 검증은 Quest 3) |
 | 설치 도구 | [ZECOLE VR 런처](https://github.com/zecole-vr/zecole-launcher) (Windows 10/11 x64, WebView2, .NET Framework 4.8) |
 | 필요 여유 공간 | PC 작업 드라이브 7 GiB + 임시 드라이브 0.5 GiB / Quest 3 GiB |
@@ -51,12 +51,12 @@ Hot Dogs, Horseshoes & Hand Grenades 2(Meta Quest 단독판)의 비공식 한국
 
 ### 백업 위치
 
-- PC 백업·설치 기록·로그: `%LOCALAPPDATA%\ZECOLE\H3VR2\Quest\<기기ID>\200534`
-- 기기 원본: `footlong.base.hdog.zecole-original-200534` (원래 게임 데이터 옆)
+- PC 백업·설치 기록·로그: `%LOCALAPPDATA%\ZECOLE\H3VR2\Quest\<기기ID>\200542`
+- 기기 원본: `footlong.base.hdog.zecole-original-200542` (원래 게임 데이터 옆)
 
 ### 게임을 업데이트했다면
 
-- 게임이 20261119E로 업데이트되면 게임 데이터가 새 원본으로 바뀌어 이전 한글패치(0.5.0 이하)가 사라집니다.
+- 게임이 20261124C로 업데이트되면 게임 데이터가 새 원본으로 바뀌어 이전 한글패치(0.5.5 이하)가 사라집니다.
 - 런처에서 **한글패치 설치**로 다시 설치하면 됩니다.
 
 ## 번역 범위와 제한

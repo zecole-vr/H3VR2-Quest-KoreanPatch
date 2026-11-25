@@ -44,7 +44,7 @@ class ShippedManifestTests(unittest.TestCase):
  def setUp(self):self.tmp=__import__('tempfile').TemporaryDirectory();self.old=launcher.STORAGE;launcher.STORAGE=Path(self.tmp.name);self.api=launcher.Api()
  def tearDown(self):launcher.STORAGE=self.old;self.tmp.cleanup()
  def test_targets_new_game_without_old_update_sources(self):
-  m=self.api.manifest;self.assertEqual((m['version_name'],m['version_code']),('20261119E',200534));self.assertEqual(m['compatible_previous'],{'e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408':'0.5.1','f8127048e607831955d51293bc54ea45973b00b2555b2bfb4062bbb7b89cc530':'0.5.3','bf5c7f229609b0c690b2b31a50e2890159cc0a8b0002b1c52b71d6518fa18278':'0.5.4'})
+  m=self.api.manifest;self.assertEqual((m['version_name'],m['version_code']),('20261124C',200542));self.assertEqual(m['compatible_previous'],{})
   old={self.V43,'85b8f8eae4b5ca39de212720bbb53037223915825a8c83d5983f05dce4880520','b58836fe1d2a9125b73bf5d6d914428d2f56b3e916627f3989c6ffaca75c836d','2a43704a757e23933a6ca34ebc076e730ed94de7d5eba6b87d875b7f8f03ddc3','01ba10560f43e03a6f8f05e2ffd65c8d1ea956261fb893ef42eb4c03deb42731'}
   self.assertFalse(old&launcher.engine.known_hashes(m));self.assertEqual(self.api.config['version_code'],m['version_code'])
  def test_new_game_original_shows_install(self):
@@ -56,7 +56,8 @@ class ShippedManifestTests(unittest.TestCase):
   with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'):
    a._scan()
   s=a.get_state();self.assertEqual(s['current'],'미설치');self.assertEqual(s['install_label'],'한글패치 설치')
- def test_v051_install_shows_update(self):
+ def test_previous_game_install_not_offered(self):
+  # 0.5.6: 게임 200542용. 이전 게임(200534)용 0.5.1 설치본 해시는 업데이트 대상이 아니므로 알 수 없는 파일로 본다
   from unittest.mock import Mock
   a=self.api;m=a.manifest;a.serial='TEST';fake=Mock();v53='e423a00c25479e923ea575d76d1c2ed6777b69a9d7afd08002242e7184391408'
   fake.run.return_value=('List of devices attached\nTEST device',0)
@@ -64,7 +65,7 @@ class ShippedManifestTests(unittest.TestCase):
   fake.hash.side_effect=lambda path,**kw:m['source_sha256'] if path.endswith(m['backup_suffix']) else v53
   with patch.object(a,'_find_adb',return_value='adb'),patch.object(launcher.engine,'Adb',return_value=fake),patch.object(launcher.engine,'version_check'):
    a._scan()
-  s=a.get_state();self.assertEqual(s['current'],'v0.5.1');self.assertEqual(s['install_label'],'한글패치 업데이트');self.assertTrue(s['can_install'])
+  s=a.get_state();self.assertEqual(s['current'],'설치 상태 확인 필요');self.assertNotEqual(s.get('install_label'),'한글패치 업데이트');self.assertFalse(s.get('can_install'))
  def _scan_without_device_backup(self,pc):
   from unittest.mock import Mock
   a=self.api;m=a.manifest;a.serial='TEST';fake=Mock()

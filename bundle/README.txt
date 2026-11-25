@@ -1,9 +1,9 @@
-H3VR2 Quest 한국어 패치 0.5.5
+H3VR2 Quest 한국어 패치 0.5.6
 제작자 · 제콜 (ZECOLE) | https://www.youtube.com/@zecole
 저장소: https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch
 문의: https://github.com/zecole-vr/H3VR2-Quest-KoreanPatch/issues/new/choose
 
-지원: Meta Quest 단독판 20261119E / versionCode 200534, Quest 3 / Quest 3S (실기 검증은 Quest 3).
+지원: Meta Quest 단독판 20261124C / versionCode 200542, Quest 3 / Quest 3S (실기 검증은 Quest 3).
 정확한 원본 APK와 데이터 체크섬까지 일치해야 설치합니다.
 다른 게임 버전, Steam/PCVR, Android 휴대폰 설치는 지원하지 않습니다.
 
@@ -22,12 +22,12 @@ H3VR2 Quest 한국어 패치 0.5.5
 USB 분리나 프로세스 종료 후 다시 실행하면 기록과 해시를 검사하여 복구하고, 그 작업이 Quest에 남긴 임시 파일도 정리합니다.
 불명확한 상태에서는 자동 삭제하지 않으므로 백업과 로그를 보존하여 문의해 주세요.
 이 EXE를 옮기거나 다시 받아도 아래 지속 저장소의 백업·로그는 유지됩니다.
-PC: %LOCALAPPDATA%\ZECOLE\H3VR2\Quest\<기기ID>\200534
-기기: /sdcard/Android/obb/com.rustltd.h3vr2/footlong.base.hdog.zecole-original-200534
+PC: %LOCALAPPDATA%\ZECOLE\H3VR2\Quest\<기기ID>\200542
+기기: /sdcard/Android/obb/com.rustltd.h3vr2/footlong.base.hdog.zecole-original-200542
 원본 백업은 제거 후에도 복구 안전성을 위해 보존합니다.
 
 게임 업데이트 후
-게임이 20261119E로 업데이트되면 게임 데이터가 새 원본으로 바뀌어 이전 한글패치(0.5.0 이하)가 사라집니다.
+게임이 20261124C로 업데이트되면 게임 데이터가 새 원본으로 바뀌어 이전 한글패치(0.5.5 이하)가 사라집니다.
 이 EXE의 ‘한글패치 설치’로 다시 설치하면 됩니다. 0.5.0 이하 EXE는 새 게임 버전에 설치하지 않습니다.
 
 필수 환경
