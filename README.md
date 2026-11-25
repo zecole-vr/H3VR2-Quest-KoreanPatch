@@ -1,5 +1,8 @@
 # H3VR2 Quest 한국어 패치
 
+> **설치는 [ZECOLE VR 런처](https://github.com/zecole-vr/zecole-launcher)로 하세요.**  
+> 런처 하나로 이 한글패치를 설치·업데이트·원본 복구할 수 있습니다. → **[ZECOLE_Launcher.exe 받기](https://github.com/zecole-vr/zecole-launcher/releases/latest/download/ZECOLE_Launcher.exe)** (설치 없이 바로 실행)
+
 제작자 **제콜 (ZECOLE)** · [YouTube](https://www.youtube.com/@zecole)
 
 Hot Dogs, Horseshoes & Hand Grenades 2의 비공식 한국어 패치입니다.
